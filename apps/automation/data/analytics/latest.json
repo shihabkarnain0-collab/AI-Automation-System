@@ -1,0 +1,29 @@
+{
+  "analytics_status": "completed",
+  "generated_at": "2026-10-07T02:13:05",
+  "pipeline": {
+    "analysis": true,
+    "affiliate": true,
+    "content": true,
+    "analytics": true
+  },
+  "summary": {
+    "products_analyzed": 26,
+    "affiliate_products": 26,
+    "best_product": "Walton Passion BX710U Core i7 10th Gen 15.6\" Laptop Price in Bangladesh",
+    "best_product_score": 78,
+    "ready_for_marketing": true
+  },
+  "best_product_report": {
+    "product_name": "Walton Passion BX710U Core i7 10th Gen 15.6\" Laptop Price in Bangladesh",
+    "score": 78,
+    "price": 59500.0,
+    "old_price": 63500.0,
+    "discount": 6.3,
+    "affiliate_url_found": true,
+    "content_generated": true,
+    "content_status": "completed",
+    "content_type": "enhanced_facebook_post",
+    "ready_for_marketing": true
+  }
+}

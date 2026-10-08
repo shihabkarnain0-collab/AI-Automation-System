@@ -1,0 +1,710 @@
+{
+  "analysis_status": "completed",
+  "source": "Star Tech",
+  "total_researched": 26,
+  "valid_products": 26,
+  "products": [
+    {
+      "product_name": "Walton Passion BX710U Core i7 10th Gen 15.6\" Laptop Price in Bangladesh",
+      "source_url": "https://www.startech.com.bd/walton-passion-bx710u-core-i7-10th-gen-laptop",
+      "title": "Walton Passion BX710U Core i7 10th Gen 15.6\" Laptop Price in Bangladesh",
+      "brand": "Brand Walton",
+      "price": 59500.0,
+      "old_price": 63500.0,
+      "discount_percent": 6.3,
+      "image": "https://www.startech.com.bd/image/cache/catalog/laptop/walton/passion-bx310u/passion-bx310u-01-1200x630.jpg",
+      "score": 78,
+      "metrics": {
+        "performance_score": 12,
+        "market_score": 12,
+        "purchase_intent_score": 10,
+        "social_marketing_score": 6
+      },
+      "reasons": [
+        "Strong mainstream price range",
+        "Moderate discount",
+        "Strong performance specifications",
+        "Strong Bangladesh-market relevance",
+        "High purchase-intent signals",
+        "Strong social-media marketing potential",
+        "Good affiliate-value range"
+      ],
+      "research_status": "completed",
+      "rank": 1
+    },
+    {
+      "product_name": "Acer Aspire Lite AL15-41 AMD Ryzen 5 15.6\" Laptop Price in BD",
+      "source_url": "https://www.startech.com.bd/acer-aspire-lite-al15-41-ryzen-5-5625u-16gb-fhd-laptop",
+      "title": "Acer Aspire Lite AL15-41 AMD Ryzen 5 15.6\" Laptop Price in BD",
+      "brand": "Brand Acer",
+      "price": 74490.0,
+      "old_price": null,
+      "discount_percent": 0,
+      "image": "https://www.startech.com.bd/image/cache/catalog/laptop/acer/aspire-lite-al15-41-0/aspire-lite-al15-41-07-1200x630.webp",
+      "score": 75,
+      "metrics": {
+        "performance_score": 15,
+        "market_score": 14,
+        "purchase_intent_score": 10,
+        "social_marketing_score": 6
+      },
+      "reasons": [
+        "Strong mainstream price range",
+        "Strong performance specifications",
+        "Strong Bangladesh-market relevance",
+        "High purchase-intent signals",
+        "Strong social-media marketing potential",
+        "Good affiliate-value range"
+      ],
+      "research_status": "completed",
+      "rank": 2
+    },
+    {
+      "product_name": "Lenovo IdeaPad 1 15AMN7 Ryzen 3 Laptop Price in Bangladesh",
+      "source_url": "https://www.startech.com.bd/lenovo-ideapad-1-15amn7-ryzen-3-7320u-laptop",
+      "title": "Lenovo IdeaPad 1 15AMN7 Ryzen 3 Laptop Price in Bangladesh",
+      "brand": "Brand Lenovo",
+      "price": 72500.0,
+      "old_price": null,
+      "discount_percent": 0,
+      "image": "https://www.startech.com.bd/image/cache/catalog/laptop/lenovo/ideapad-1-15amn7/ideapad-1-15amn7-001-1200x630.webp",
+      "score": 70,
+      "metrics": {
+        "performance_score": 9,
+        "market_score": 15,
+        "purchase_intent_score": 10,
+        "social_marketing_score": 6
+      },
+      "reasons": [
+        "Strong mainstream price range",
+        "Good performance specifications",
+        "Strong Bangladesh-market relevance",
+        "High purchase-intent signals",
+        "Strong social-media marketing potential",
+        "Good affiliate-value range"
+      ],
+      "research_status": "completed",
+      "rank": 3
+    },
+    {
+      "product_name": "Walton Prelude N50 Pro Pentium Silver N5030 14\" FHD Laptop Price in BD",
+      "source_url": "https://www.startech.com.bd/walton-prelude-n50-pro-pentium-silver-n5030-laptop",
+      "title": "Walton Prelude N50 Pro Pentium Silver N5030 14\" FHD Laptop Price in BD",
+      "brand": "Brand Walton",
+      "price": 31000.0,
+      "old_price": 34500.0,
+      "discount_percent": 10.14,
+      "image": "https://www.startech.com.bd/image/cache/catalog/laptop/walton/prelude-n41-pro/prelude-n41-pro-01-1200x630.webp",
+      "score": 69,
+      "metrics": {
+        "performance_score": 3,
+        "market_score": 12,
+        "purchase_intent_score": 10,
+        "social_marketing_score": 4
+      },
+      "reasons": [
+        "Strong mainstream price range",
+        "Strong discount",
+        "Strong Bangladesh-market relevance",
+        "High purchase-intent signals",
+        "Good entry-level affiliate value"
+      ],
+      "research_status": "completed",
+      "rank": 4
+    },
+    {
+      "product_name": "Smart Flairedge Core i5 13th Gen Laptop Price In Bangladesh",
+      "source_url": "https://www.startech.com.bd/smart-flairedge-core-i5-13th-gen-laptop",
+      "title": "Smart Flairedge Core i5 13th Gen Laptop Price In Bangladesh",
+      "brand": "Brand Smart",
+      "price": 62500.0,
+      "old_price": null,
+      "discount_percent": 0,
+      "image": "https://www.startech.com.bd/image/cache/catalog/laptop/smart/flairedge/flairedge-grey-01-1200x630.webp",
+      "score": 69,
+      "metrics": {
+        "performance_score": 9,
+        "market_score": 14,
+        "purchase_intent_score": 10,
+        "social_marketing_score": 6
+      },
+      "reasons": [
+        "Strong mainstream price range",
+        "Good performance specifications",
+        "Strong Bangladesh-market relevance",
+        "High purchase-intent signals",
+        "Strong social-media marketing potential",
+        "Good affiliate-value range"
+      ],
+      "research_status": "completed",
+      "rank": 5
+    },
+    {
+      "product_name": "Walton TAMARIND EX3US1 Core 3 100U Laptop Price in Bangladesh",
+      "source_url": "https://www.startech.com.bd/walton-tamarind-ex3us1-core-3-100u-laptop",
+      "title": "Walton TAMARIND EX3US1 Core 3 100U Laptop Price in Bangladesh",
+      "brand": "Brand Walton",
+      "price": 61000.0,
+      "old_price": 63500.0,
+      "discount_percent": 3.94,
+      "image": "https://www.startech.com.bd/image/cache/catalog/laptop/walton/tamarind-ex3us1-core/tamarind-ex3us1-core-01-1200x630.webp",
+      "score": 67,
+      "metrics": {
+        "performance_score": 6,
+        "market_score": 12,
+        "purchase_intent_score": 10,
+        "social_marketing_score": 4
+      },
+      "reasons": [
+        "Strong mainstream price range",
+        "Discount available",
+        "Good performance specifications",
+        "Strong Bangladesh-market relevance",
+        "High purchase-intent signals",
+        "Good affiliate-value range"
+      ],
+      "research_status": "completed",
+      "rank": 6
+    },
+    {
+      "product_name": "Walton Prelude N41 Pro Celeron N4120 14\" FHD Laptop Price in Bangladesh",
+      "source_url": "https://www.startech.com.bd/walton-prelude-n41-pro-celeron-n4120-laptop",
+      "title": "Walton Prelude N41 Pro Celeron N4120 14\" FHD Laptop Price in Bangladesh",
+      "brand": "Brand Walton",
+      "price": 28500.0,
+      "old_price": 33900.0,
+      "discount_percent": 15.93,
+      "image": "https://www.startech.com.bd/image/cache/catalog/laptop/walton/prelude-n41-pro/prelude-n41-pro-01-1200x630.webp",
+      "score": 66,
+      "metrics": {
+        "performance_score": 3,
+        "market_score": 12,
+        "purchase_intent_score": 10,
+        "social_marketing_score": 4
+      },
+      "reasons": [
+        "Highly affordable price",
+        "Strong discount",
+        "Strong Bangladesh-market relevance",
+        "High purchase-intent signals",
+        "Good entry-level affiliate value"
+      ],
+      "research_status": "completed",
+      "rank": 7
+    },
+    {
+      "product_name": "Chuwi CoreBook X Laptop Price in Bangladesh | Star Tech",
+      "source_url": "https://www.startech.com.bd/chuwi-corebook-x-laptop",
+      "title": "Chuwi CoreBook X Laptop Price in Bangladesh | Star Tech",
+      "brand": "Brand Chuwi",
+      "price": 60000.0,
+      "old_price": 63500.0,
+      "discount_percent": 5.51,
+      "image": "https://www.startech.com.bd/image/cache/catalog/laptop/chuwi/corebook-x/corebook-x-01-1200x630.webp",
+      "score": 66,
+      "metrics": {
+        "performance_score": 6,
+        "market_score": 8,
+        "purchase_intent_score": 10,
+        "social_marketing_score": 4
+      },
+      "reasons": [
+        "Strong mainstream price range",
+        "Moderate discount",
+        "Good performance specifications",
+        "High purchase-intent signals",
+        "Good affiliate-value range"
+      ],
+      "research_status": "completed",
+      "rank": 8
+    },
+    {
+      "product_name": "Acer Aspire 3 A325-53-i3 Core i3 laptop Price in Bangladesh",
+      "source_url": "https://www.startech.com.bd/acer-aspire-3-a325-53-i3-laptop",
+      "title": "Acer Aspire 3 A325-53-i3 Core i3 laptop Price in Bangladesh",
+      "brand": "Brand Acer",
+      "price": 71900.0,
+      "old_price": null,
+      "discount_percent": 0,
+      "image": "https://www.startech.com.bd/image/cache/catalog/laptop/acer/a325-53-i3/a325-53-i3-05-1200x630.webp",
+      "score": 64,
+      "metrics": {
+        "performance_score": 6,
+        "market_score": 14,
+        "purchase_intent_score": 10,
+        "social_marketing_score": 4
+      },
+      "reasons": [
+        "Strong mainstream price range",
+        "Good performance specifications",
+        "Strong Bangladesh-market relevance",
+        "High purchase-intent signals",
+        "Good affiliate-value range"
+      ],
+      "research_status": "completed",
+      "rank": 9
+    },
+    {
+      "product_name": "Gigabyte Gaming A16 GA63H Ryzen 7 260 Laptop Price in BD",
+      "source_url": "https://www.startech.com.bd/gigabyte-gaming-a16-ga63h-ryzen-7-gaming-laptop",
+      "title": "Gigabyte Gaming A16 GA63H Ryzen 7 260 Laptop Price in BD",
+      "brand": "Brand GIGABYTE",
+      "price": 157000.0,
+      "old_price": null,
+      "discount_percent": 0,
+      "image": "https://www.startech.com.bd/image/cache/catalog/laptop/gigabyte/aero-x16-1vh/aero-x16-1vh-001-1200x630.webp",
+      "score": 64,
+      "metrics": {
+        "performance_score": 12,
+        "market_score": 15,
+        "purchase_intent_score": 10,
+        "social_marketing_score": 10
+      },
+      "reasons": [
+        "High-ticket product",
+        "Strong performance specifications",
+        "Strong Bangladesh-market relevance",
+        "High purchase-intent signals",
+        "Strong social-media marketing potential",
+        "High-ticket affiliate opportunity"
+      ],
+      "research_status": "completed",
+      "rank": 10
+    },
+    {
+      "product_name": "HP 15-fc0623AU Ryzen 3 7320U Laptop in Bangladesh | Star Tech",
+      "source_url": "https://www.startech.com.bd/hp-15-fc0623au-ryzen-3-7320u-laptop",
+      "title": "HP 15-fc0623AU Ryzen 3 7320U Laptop in Bangladesh | Star Tech",
+      "brand": "Brand HP",
+      "price": 74500.0,
+      "old_price": null,
+      "discount_percent": 0,
+      "image": "https://www.startech.com.bd/image/cache/catalog/laptop/hp-laptop/15-fc0623au/15-fc0623au-01-1200x630.webp",
+      "score": 62,
+      "metrics": {
+        "performance_score": 3,
+        "market_score": 15,
+        "purchase_intent_score": 10,
+        "social_marketing_score": 4
+      },
+      "reasons": [
+        "Strong mainstream price range",
+        "Strong Bangladesh-market relevance",
+        "High purchase-intent signals",
+        "Good affiliate-value range"
+      ],
+      "research_status": "completed",
+      "rank": 11
+    },
+    {
+      "product_name": "Gigabyte A16 GA6H CMH Core i7 13th Gen Laptop Price in BD",
+      "source_url": "https://www.startech.com.bd/gigabyte-a16-ga6h-cmh-core-i7-13th-gen-rtx-4050-gaming-laptop",
+      "title": "Gigabyte A16 GA6H CMH Core i7 13th Gen Laptop Price in BD",
+      "brand": "Brand GIGABYTE",
+      "price": 155000.0,
+      "old_price": 152900.0,
+      "discount_percent": 0,
+      "image": "https://www.startech.com.bd/image/cache/catalog/laptop/gigabyte/gaming-a16-ga6h-cmh/gaming-a16-cmh-01-1200x630.webp",
+      "score": 61,
+      "metrics": {
+        "performance_score": 12,
+        "market_score": 12,
+        "purchase_intent_score": 10,
+        "social_marketing_score": 10
+      },
+      "reasons": [
+        "High-ticket product",
+        "Strong performance specifications",
+        "Strong Bangladesh-market relevance",
+        "High purchase-intent signals",
+        "Strong social-media marketing potential",
+        "High-ticket affiliate opportunity"
+      ],
+      "research_status": "completed",
+      "rank": 12
+    },
+    {
+      "product_name": "Macbook Air M5 13 Inch Price In Bangladesh 2026 | Star Tech",
+      "source_url": "https://www.startech.com.bd/apple-macbook-air-m5-13-inch",
+      "title": "Macbook Air M5 13 Inch Price In Bangladesh 2026 | Star Tech",
+      "brand": "Brand Apple",
+      "price": 161500.0,
+      "old_price": 175000.0,
+      "discount_percent": 7.71,
+      "image": "https://www.startech.com.bd/image/cache/catalog/laptop/apple/macbook-air-13-m4/sky-blue/macbook-air-13-m4-sky-blue-01-1200x630.webp",
+      "score": 60,
+      "metrics": {
+        "performance_score": 9,
+        "market_score": 10,
+        "purchase_intent_score": 10,
+        "social_marketing_score": 10
+      },
+      "reasons": [
+        "Very high price",
+        "Moderate discount",
+        "Good performance specifications",
+        "Strong Bangladesh-market relevance",
+        "High purchase-intent signals",
+        "Strong social-media marketing potential",
+        "High-ticket affiliate opportunity"
+      ],
+      "research_status": "completed",
+      "rank": 13
+    },
+    {
+      "product_name": "Gigabyte Gaming A16 GA63H Ryzen 7 RTX 5060 Laptop Price in BD",
+      "source_url": "https://www.startech.com.bd/gigabyte-gaming-a16-ga63h-ryzen-7-260-gaming-laptop",
+      "title": "Gigabyte Gaming A16 GA63H Ryzen 7 RTX 5060 Laptop Price in BD",
+      "brand": "Brand GIGABYTE",
+      "price": 170000.0,
+      "old_price": null,
+      "discount_percent": 0,
+      "image": "https://www.startech.com.bd/image/cache/catalog/laptop/gigabyte/aero-x16-1vh/aero-x16-1vh-001-1200x630.webp",
+      "score": 60,
+      "metrics": {
+        "performance_score": 12,
+        "market_score": 15,
+        "purchase_intent_score": 10,
+        "social_marketing_score": 10
+      },
+      "reasons": [
+        "Very high price",
+        "Strong performance specifications",
+        "Strong Bangladesh-market relevance",
+        "High purchase-intent signals",
+        "Strong social-media marketing potential",
+        "High-ticket affiliate opportunity"
+      ],
+      "research_status": "completed",
+      "rank": 14
+    },
+    {
+      "product_name": "Gigabyte AERO X16 1VH RTX 5050 Laptop Price in Bangladesh",
+      "source_url": "https://www.startech.com.bd/gigabyte-aero-x16-1vh-amd-ryzen-ai-7-350-gaming-laptop",
+      "title": "Gigabyte AERO X16 1VH RTX 5050 Laptop Price in Bangladesh",
+      "brand": "Brand GIGABYTE",
+      "price": 180000.0,
+      "old_price": null,
+      "discount_percent": 0,
+      "image": "https://www.startech.com.bd/image/cache/catalog/laptop/gigabyte/aero-x16-1vh/aero-x16-1vh-001-1200x630.webp",
+      "score": 60,
+      "metrics": {
+        "performance_score": 12,
+        "market_score": 15,
+        "purchase_intent_score": 10,
+        "social_marketing_score": 10
+      },
+      "reasons": [
+        "Very high price",
+        "Strong performance specifications",
+        "Strong Bangladesh-market relevance",
+        "High purchase-intent signals",
+        "Strong social-media marketing potential",
+        "High-ticket affiliate opportunity"
+      ],
+      "research_status": "completed",
+      "rank": 15
+    },
+    {
+      "product_name": "Acer Aspire 3 A325-42-V2 Ryzen 3 laptop Price in Bangladesh",
+      "source_url": "https://www.startech.com.bd/acer-aspire-3-a325-42-v2-laptop",
+      "title": "Acer Aspire 3 A325-42-V2 Ryzen 3 laptop Price in Bangladesh",
+      "brand": "Brand Acer",
+      "price": 57000.0,
+      "old_price": null,
+      "discount_percent": 0,
+      "image": "https://www.startech.com.bd/image/cache/catalog/laptop/acer/a325-42-v2/a325-42-v2-01-1200x630.webp",
+      "score": 59,
+      "metrics": {
+        "performance_score": 0,
+        "market_score": 15,
+        "purchase_intent_score": 10,
+        "social_marketing_score": 4
+      },
+      "reasons": [
+        "Strong mainstream price range",
+        "Strong Bangladesh-market relevance",
+        "High purchase-intent signals",
+        "Good affiliate-value range"
+      ],
+      "research_status": "completed",
+      "rank": 16
+    },
+    {
+      "product_name": "Acer Aspire 3 A324-53-C3 Core 3 laptop Price in Bangladesh",
+      "source_url": "https://www.startech.com.bd/acer-aspire-3-a324-53-c3-laptop",
+      "title": "Acer Aspire 3 A324-53-C3 Core 3 laptop Price in Bangladesh",
+      "brand": "Brand Acer",
+      "price": 67900.0,
+      "old_price": null,
+      "discount_percent": 0,
+      "image": "https://www.startech.com.bd/image/cache/catalog/laptop/acer/a324-53-c3/a324-53-c3-01-1200x630.webp",
+      "score": 58,
+      "metrics": {
+        "performance_score": 0,
+        "market_score": 14,
+        "purchase_intent_score": 10,
+        "social_marketing_score": 4
+      },
+      "reasons": [
+        "Strong mainstream price range",
+        "Strong Bangladesh-market relevance",
+        "High purchase-intent signals",
+        "Good affiliate-value range"
+      ],
+      "research_status": "completed",
+      "rank": 17
+    },
+    {
+      "product_name": "Dell Pro 15 Essential PV15250 Core 3 Laptop Price in Bangladesh",
+      "source_url": "https://www.startech.com.bd/dell-pro-15-essential-pv15250-laptop",
+      "title": "Dell Pro 15 Essential PV15250 Core 3 Laptop Price in Bangladesh",
+      "brand": "Brand Dell",
+      "price": 87500.0,
+      "old_price": null,
+      "discount_percent": 0,
+      "image": "https://www.startech.com.bd/image/cache/catalog/laptop/dell/pro-15-essential-pv15250/pro-15-essential-pv15250-01-1200x630.webp",
+      "score": 56,
+      "metrics": {
+        "performance_score": 3,
+        "market_score": 14,
+        "purchase_intent_score": 10,
+        "social_marketing_score": 4
+      },
+      "reasons": [
+        "Premium but still marketable price",
+        "Strong Bangladesh-market relevance",
+        "High purchase-intent signals",
+        "Good affiliate-value range"
+      ],
+      "research_status": "completed",
+      "rank": 18
+    },
+    {
+      "product_name": "Chuwi HeroBook Plus Intel N4020 Laptop Price In Bangladesh | Star Tech",
+      "source_url": "https://www.startech.com.bd/chuwi-herobook-plus-intel-n4020-laptop",
+      "title": "Chuwi HeroBook Plus Intel N4020 Laptop Price In Bangladesh | Star Tech",
+      "brand": "Brand Chuwi",
+      "price": 38000.0,
+      "old_price": 33900.0,
+      "discount_percent": 0,
+      "image": "https://www.startech.com.bd/image/cache/catalog/laptop/chuwi/herobook-plus/herobook-plus-002-1200x630.webp",
+      "score": 54,
+      "metrics": {
+        "performance_score": 0,
+        "market_score": 12,
+        "purchase_intent_score": 10,
+        "social_marketing_score": 4
+      },
+      "reasons": [
+        "Strong mainstream price range",
+        "Strong Bangladesh-market relevance",
+        "High purchase-intent signals",
+        "Good entry-level affiliate value"
+      ],
+      "research_status": "completed",
+      "rank": 19
+    },
+    {
+      "product_name": "Chuwi GemiBook XPro Celeron N100 Laptop Price in Bangladesh",
+      "source_url": "https://www.startech.com.bd/chuwi-gemibook-xpro-laptop",
+      "title": "Chuwi GemiBook XPro Celeron N100 Laptop Price in Bangladesh",
+      "brand": "Brand Chuwi",
+      "price": 39500.0,
+      "old_price": 33900.0,
+      "discount_percent": 0,
+      "image": "https://www.startech.com.bd/image/cache/catalog/laptop/chuwi/gemibook-xpro/gemibook-xpro-01-1200x630.webp",
+      "score": 53,
+      "metrics": {
+        "performance_score": 3,
+        "market_score": 10,
+        "purchase_intent_score": 10,
+        "social_marketing_score": 2
+      },
+      "reasons": [
+        "Strong mainstream price range",
+        "Strong Bangladesh-market relevance",
+        "High purchase-intent signals",
+        "Good entry-level affiliate value"
+      ],
+      "research_status": "completed",
+      "rank": 20
+    },
+    {
+      "product_name": "Chuwi CoreBook Core i3 Laptop Price in Bangladesh | Star Tech",
+      "source_url": "https://www.startech.com.bd/chuwi-corebook-core-i3-fhd-laptop",
+      "title": "Chuwi CoreBook Core i3 Laptop Price in Bangladesh | Star Tech",
+      "brand": "Brand Chuwi",
+      "price": 42000.0,
+      "old_price": null,
+      "discount_percent": 0,
+      "image": "https://www.startech.com.bd/image/cache/catalog/laptop/chuwi/corebook-i3/corebook-i3-04-1200x630.webp",
+      "score": 52,
+      "metrics": {
+        "performance_score": 0,
+        "market_score": 10,
+        "purchase_intent_score": 10,
+        "social_marketing_score": 2
+      },
+      "reasons": [
+        "Strong mainstream price range",
+        "Strong Bangladesh-market relevance",
+        "High purchase-intent signals",
+        "Good affiliate-value range"
+      ],
+      "research_status": "completed",
+      "rank": 21
+    },
+    {
+      "product_name": "HP 15-fc0630AU Ryzen 3 7320U Laptop in Bangladesh | Star Tech",
+      "source_url": "https://www.startech.com.bd/hp-15-fc0630au-ryzen-5-7520u-laptop",
+      "title": "HP 15-fc0630AU Ryzen 3 7320U Laptop in Bangladesh | Star Tech",
+      "brand": "Brand HP",
+      "price": 0.0,
+      "old_price": null,
+      "discount_percent": 0,
+      "image": "https://www.startech.com.bd/image/cache/catalog/laptop/hp-laptop/15-fc0623au/15-fc0623au-01-1200x630.webp",
+      "score": 52,
+      "metrics": {
+        "performance_score": 6,
+        "market_score": 15,
+        "purchase_intent_score": 10,
+        "social_marketing_score": 4
+      },
+      "reasons": [
+        "Very low price",
+        "Good performance specifications",
+        "Strong Bangladesh-market relevance",
+        "High purchase-intent signals"
+      ],
+      "research_status": "completed",
+      "rank": 22
+    },
+    {
+      "product_name": "HP 15-fc0633AU Ryzen 5 7520U Laptop in Bangladesh",
+      "source_url": "https://www.startech.com.bd/hp-15-fc0633au-ryzen-5-7520u-laptop",
+      "title": "HP 15-fc0633AU Ryzen 5 7520U Laptop in Bangladesh",
+      "brand": "Brand HP",
+      "price": 0.0,
+      "old_price": null,
+      "discount_percent": 0,
+      "image": "https://www.startech.com.bd/image/cache/catalog/laptop/hp-laptop/15-fc0633au/15-fc0633au-01-1200x630.webp",
+      "score": 52,
+      "metrics": {
+        "performance_score": 6,
+        "market_score": 15,
+        "purchase_intent_score": 10,
+        "social_marketing_score": 4
+      },
+      "reasons": [
+        "Very low price",
+        "Good performance specifications",
+        "Strong Bangladesh-market relevance",
+        "High purchase-intent signals"
+      ],
+      "research_status": "completed",
+      "rank": 23
+    },
+    {
+      "product_name": "HP 15-fc0634AU Ryzen 5 7320U Laptop in Bangladesh | Star Tech",
+      "source_url": "https://www.startech.com.bd/hp-15-fc0634au-ryzen-5-laptop",
+      "title": "HP 15-fc0634AU Ryzen 5 7320U Laptop in Bangladesh | Star Tech",
+      "brand": "Brand HP",
+      "price": 0.0,
+      "old_price": null,
+      "discount_percent": 0,
+      "image": "https://www.startech.com.bd/image/cache/catalog/laptop/hp-laptop/15-fc0634au/15-fc0634au-01-1200x630.webp",
+      "score": 52,
+      "metrics": {
+        "performance_score": 6,
+        "market_score": 15,
+        "purchase_intent_score": 10,
+        "social_marketing_score": 4
+      },
+      "reasons": [
+        "Very low price",
+        "Good performance specifications",
+        "Strong Bangladesh-market relevance",
+        "High purchase-intent signals"
+      ],
+      "research_status": "completed",
+      "rank": 24
+    },
+    {
+      "product_name": "Chuwi HeroBook Pro Laptop Price in Bangladesh | Star Tech",
+      "source_url": "https://www.startech.com.bd/chuwi-herobook-pro-intel-celeron-laptop",
+      "title": "Chuwi HeroBook Pro Laptop Price in Bangladesh | Star Tech",
+      "brand": "Brand Chuwi",
+      "price": 35000.0,
+      "old_price": 33900.0,
+      "discount_percent": 0,
+      "image": "https://www.startech.com.bd/image/cache/catalog/laptop/chuwi/herobook/herobook-pro/herobook-pro-1-1200x630.jpg",
+      "score": 51,
+      "metrics": {
+        "performance_score": 3,
+        "market_score": 8,
+        "purchase_intent_score": 10,
+        "social_marketing_score": 2
+      },
+      "reasons": [
+        "Strong mainstream price range",
+        "High purchase-intent signals",
+        "Good entry-level affiliate value"
+      ],
+      "research_status": "completed",
+      "rank": 25
+    },
+    {
+      "product_name": "HP 15-fc0628AU Ryzen 3 7320U Laptop in Bangladesh | Star Tech",
+      "source_url": "https://www.startech.com.bd/hp-15-fc0628au-ryzen-3-7320u-laptop",
+      "title": "HP 15-fc0628AU Ryzen 3 7320U Laptop in Bangladesh | Star Tech",
+      "brand": "Brand HP",
+      "price": 0.0,
+      "old_price": null,
+      "discount_percent": 0,
+      "image": "https://www.startech.com.bd/image/cache/catalog/laptop/hp-laptop/15-fc0628au/15-fc0628au-01-1200x630.webp",
+      "score": 49,
+      "metrics": {
+        "performance_score": 3,
+        "market_score": 15,
+        "purchase_intent_score": 10,
+        "social_marketing_score": 4
+      },
+      "reasons": [
+        "Very low price",
+        "Strong Bangladesh-market relevance",
+        "High purchase-intent signals"
+      ],
+      "research_status": "completed",
+      "rank": 26
+    }
+  ],
+  "best_product": {
+    "product_name": "Walton Passion BX710U Core i7 10th Gen 15.6\" Laptop Price in Bangladesh",
+    "source_url": "https://www.startech.com.bd/walton-passion-bx710u-core-i7-10th-gen-laptop",
+    "title": "Walton Passion BX710U Core i7 10th Gen 15.6\" Laptop Price in Bangladesh",
+    "brand": "Brand Walton",
+    "price": 59500.0,
+    "old_price": 63500.0,
+    "discount_percent": 6.3,
+    "image": "https://www.startech.com.bd/image/cache/catalog/laptop/walton/passion-bx310u/passion-bx310u-01-1200x630.jpg",
+    "score": 78,
+    "metrics": {
+      "performance_score": 12,
+      "market_score": 12,
+      "purchase_intent_score": 10,
+      "social_marketing_score": 6
+    },
+    "reasons": [
+      "Strong mainstream price range",
+      "Moderate discount",
+      "Strong performance specifications",
+      "Strong Bangladesh-market relevance",
+      "High purchase-intent signals",
+      "Strong social-media marketing potential",
+      "Good affiliate-value range"
+    ],
+    "research_status": "completed",
+    "rank": 1
+  }
+}

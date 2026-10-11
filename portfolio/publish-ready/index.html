@@ -1,0 +1,640 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+<meta name="description" content="THE OBSERVER — a living archive of perception, identity and unanswered questions.">
+<title>THE OBSERVER — Living Archive</title>
+<style>
+:root{--bg:#080808;--panel:#101010;--text:#e7e4df;--muted:#85817d;--red:#a51f30;--line:#292525;--serif:Georgia,'Times New Roman',serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}
+body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:10;opacity:.12;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E")}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.topbar{position:absolute;top:0;left:0;width:100%;padding:27px 6vw;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #ffffff12;font-size:10px;letter-spacing:2px;color:var(--muted)}
+.topbar strong{color:var(--text);font-weight:500}
+.status{display:flex;align-items:center;gap:9px}
+.dot{width:6px;height:6px;background:var(--red);border-radius:50%;box-shadow:0 0 12px #a51f30}
+.hero{min-height:94vh;padding:150px 9vw 100px;display:flex;flex-direction:column;justify-content:center;position:relative}
+.eyebrow{font-size:10px;letter-spacing:4px;color:var(--red);text-transform:uppercase}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(54px,12vw,150px);letter-spacing:-.075em;line-height:.84;margin:38px 0 30px}
+h1 span{display:block;color:#77716d;margin-left:clamp(20px,12vw,170px)}
+.subtitle{font-family:var(--serif);font-size:clamp(17px,2vw,24px);font-style:italic;color:#bcb6b0;max-width:480px;line-height:1.7}
+.hero-bottom{position:absolute;bottom:35px;left:9vw;right:9vw;display:flex;justify-content:space-between;color:var(--muted);font-size:9px;letter-spacing:2px}
+.side-mark{position:absolute;right:5vw;top:45%;writing-mode:vertical-rl;color:#57514e;font-size:9px;letter-spacing:4px}
+section{padding:110px 9vw;border-top:1px solid var(--line)}
+.section-head{display:flex;justify-content:space-between;gap:20px;align-items:baseline;margin-bottom:48px}
+.section-head h2{font:400 clamp(32px,5vw,58px) var(--serif);margin:0;letter-spacing:-2px}
+.section-no{font-size:10px;letter-spacing:2px;color:var(--red)}
+.intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:10vw}
+.intro-grid p{font:18px/1.9 var(--serif);color:#b8b2ad;margin:0}
+.intro-grid .large{font-size:clamp(24px,3vw,38px);line-height:1.45;color:var(--text)}
+.archive-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.record{background:linear-gradient(145deg,#141313,#0a0a0a);border:1px solid var(--line);padding:28px 23px;min-height:260px;display:flex;flex-direction:column;transition:border-color .3s,transform .3s;cursor:pointer;text-align:left;color:var(--text)}
+.record:hover,.record:focus-visible{border-color:var(--red);transform:translateY(-4px);outline:none}
+.record .id{font-size:9px;letter-spacing:2px;color:var(--red)}
+.record h3{font:400 27px var(--serif);margin:40px 0 12px}
+.record p{font-size:12px;line-height:1.8;color:var(--muted);margin:0}
+.record .open{margin-top:auto;padding-top:28px;font-size:9px;letter-spacing:2px;color:#aaa}
+.signal{margin-top:16px;border:1px solid #3c2024;background:#130d0e;padding:26px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.signal p{margin:0;color:#c6b9b8;font:italic 19px var(--serif)}
+.signal button,.action{background:transparent;color:var(--text);border:1px solid #514347;padding:12px 16px;letter-spacing:2px;font-size:9px;cursor:pointer}
+.signal button:hover,.action:hover{background:var(--red);border-color:var(--red)}
+.question{max-width:850px;margin:auto}
+.question blockquote{font:clamp(27px,5vw,52px)/1.35 var(--serif);margin:0 0 32px}
+.answer{min-height:54px;margin-top:25px;color:#aaa;font:italic 18px/1.8 var(--serif)}
+.archive-console{background:#050505;border:1px solid #302b2b;padding:24px;font:12px/2 monospace;color:#8f8984;min-height:120px}
+.archive-console .red{color:#cb5965}
+#contact{display:flex;justify-content:space-between;align-items:end;gap:30px}
+#contact h2{font:400 clamp(38px,7vw,80px) var(--serif);margin:20px 0}
+footer{padding:25px 9vw;display:flex;justify-content:space-between;gap:15px;color:#6f6965;font-size:9px;letter-spacing:1.5px;border-top:1px solid var(--line)}
+.progress{position:fixed;top:0;left:0;height:2px;background:var(--red);width:0;z-index:20}
+.secret-button{position:fixed;right:22px;bottom:22px;z-index:30;border:1px solid #4a3033;background:#0c090a;color:#c95b67;width:43px;height:43px;border-radius:50%;cursor:pointer;font:20px var(--serif)}
+.modal{display:none;position:fixed;inset:0;z-index:50;background:#000e;align-items:center;justify-content:center;padding:22px}
+.modal.show{display:flex}
+.modal-card{width:min(560px,100%);background:#0c0b0b;border:1px solid #4b292e;padding:clamp(24px,6vw,48px);position:relative;box-shadow:0 25px 100px #000}
+.modal-card h2{font:400 38px var(--serif);margin:25px 0}
+.modal-card p{font:16px/1.9 var(--serif);color:#aaa}
+.close{position:absolute;right:18px;top:15px;background:none;border:0;color:#aaa;font-size:24px;cursor:pointer}
+.hidden-text{display:none}
+#toast{position:fixed;bottom:78px;right:22px;z-index:35;background:#171011;border:1px solid #512a30;padding:12px 15px;color:#d4c5c4;font-size:11px;letter-spacing:1px;display:none}
+@media(max-width:700px){.hero{padding-left:7vw;padding-right:7vw}.hero-bottom{left:7vw;right:7vw}.side-mark{display:none}section{padding:75px 7vw}.intro-grid{grid-template-columns:1fr;gap:25px}.archive-grid{grid-template-columns:1fr}.record{min-height:210px}.record h3{margin-top:25px}.signal,#contact{align-items:flex-start;flex-direction:column}footer{padding:24px 7vw;flex-direction:column}.topbar{padding:22px 7vw}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+/* PHASE 4 — THE UNSEEN LAYER */
+.lens-section{padding-top:90px;padding-bottom:100px}
+.lens-intro{max-width:620px;color:#aaa;line-height:1.9;margin-bottom:30px}
+.lens-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.lens-choice{background:#0d0c0c;color:#e7e4df;border:1px solid #302929;padding:24px 18px;text-align:left;cursor:pointer;min-height:150px;transition:.25s}
+.lens-choice:hover,.lens-choice.active{border-color:#a51f30;background:#160d0f;transform:translateY(-3px)}
+.lens-choice small{display:block;color:#a51f30;letter-spacing:2px;font-size:9px;margin-bottom:20px}
+.lens-choice strong{font:400 25px Georgia,serif;display:block;margin-bottom:10px}
+.lens-choice span{font-size:11px;color:#999;line-height:1.7}
+.lens-result{margin-top:18px;border-left:2px solid #a51f30;padding:20px 24px;background:#100d0d;color:#c8c0bd;line-height:1.9;min-height:95px}
+.dossier{margin-top:35px;border:1px solid #34282a;padding:25px;background:#090808}
+.dossier label{display:block;font-size:10px;letter-spacing:2px;color:#a94a55;margin-bottom:14px}
+.dossier-row{display:flex;gap:10px}
+.dossier input{min-width:0;flex:1;background:#050505;color:#eee;border:1px solid #3c3333;padding:14px;font:12px monospace}
+.dossier button{background:#a51f30;color:#fff;border:0;padding:12px 18px;cursor:pointer;font-size:10px;letter-spacing:1px}
+.dossier-message{font:italic 16px/1.8 Georgia,serif;color:#b5aaa8;margin:18px 0 0;overflow-wrap:anywhere}
+.dossier-unlocked{border-color:#a51f30;box-shadow:0 0 35px #a51f3015}
+@media(max-width:650px){.lens-options{grid-template-columns:1fr}.lens-choice{min-height:unset}.dossier-row{flex-direction:column}.dossier button{min-height:44px}}
+/* PHASE 5 — THE FINAL PARADOX */
+.paradox-section {
+    position: relative;
+    padding: 110px 7%;
+    margin-top: 40px;
+    border-top: 1px solid rgba(255,255,255,.10);
+    overflow: hidden;
+}
+.paradox-section::before {
+    content: "";
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: rgba(130,20,35,.10);
+    filter: blur(90px);
+    top: 15%;
+    right: -150px;
+    pointer-events: none;
+}
+.paradox-kicker {
+    color: #b77b83;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+.paradox-title {
+    font-size: clamp(34px, 6vw, 68px);
+    letter-spacing: -2px;
+    line-height: 1.05;
+    margin: 0 0 20px;
+}
+.paradox-intro {
+    max-width: 620px;
+    color: #aaa7ab;
+    line-height: 1.9;
+    margin-bottom: 42px;
+}
+.paradox-observations {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin: 30px 0;
+}
+.paradox-observation {
+    min-height: 170px;
+    padding: 24px;
+    text-align: left;
+    color: #dedadd;
+    background: rgba(255,255,255,.025);
+    border: 1px solid rgba(255,255,255,.12);
+    cursor: pointer;
+    transition: border-color .25s, background .25s, transform .25s;
+}
+.paradox-observation:hover {
+    border-color: rgba(190,90,105,.65);
+    transform: translateY(-3px);
+}
+.paradox-observation.selected {
+    border-color: #9c3547;
+    background: rgba(130,20,35,.13);
+}
+.paradox-observation span {
+    display: block;
+    color: #b77b83;
+    font-size: 10px;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+}
+.paradox-observation strong {
+    display: block;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.paradox-observation small {
+    display: block;
+    color: #969196;
+    line-height: 1.7;
+    font-size: 12px;
+}
+.paradox-interpretation {
+    min-height: 75px;
+    padding: 22px 24px;
+    border-left: 2px solid #853242;
+    color: #bcb7bc;
+    background: rgba(255,255,255,.025);
+    line-height: 1.8;
+    margin: 28px 0;
+}
+.paradox-progress {
+    color: #a49da3;
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin: 25px 0;
+}
+.paradox-progress strong {
+    color: #d6a0a7;
+}
+.paradox-unlock {
+    display: inline-block;
+    padding: 15px 23px;
+    border: 1px solid #88404b;
+    background: transparent;
+    color: #eee6e8;
+    font: inherit;
+    font-size: 11px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: background .25s, border-color .25s;
+}
+.paradox-unlock:hover {
+    background: rgba(130,20,35,.20);
+    border-color: #c16a78;
+}
+.paradox-status {
+    color: #c8a0a5;
+    font-size: 12px;
+    line-height: 1.8;
+    margin-top: 18px;
+}
+.paradox-record {
+    display: none;
+    max-width: 760px;
+    margin-top: 35px;
+    padding: clamp(24px, 5vw, 48px);
+    background: rgba(255,255,255,.025);
+    border: 1px solid rgba(155,64,79,.45);
+}
+.paradox-record.revealed {
+    display: block;
+    animation: paradoxAppear .8s ease both;
+}
+.paradox-record-label {
+    color: #bc7883;
+    font-size: 10px;
+    letter-spacing: 4px;
+    margin-bottom: 25px;
+}
+.paradox-record h3 {
+    font-size: clamp(25px, 4vw, 42px);
+    font-weight: 400;
+    line-height: 1.25;
+    margin: 0 0 22px;
+}
+.paradox-record p {
+    color: #b5afb5;
+    line-height: 2;
+    max-width: 580px;
+}
+.paradox-record .paradox-signature {
+    margin-top: 30px;
+    color: #8d858d;
+    font-size: 10px;
+    letter-spacing: 3px;
+}
+@keyframes paradoxAppear {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@media (max-width: 700px) {
+    .paradox-section { padding: 75px 6%; }
+    .paradox-observations { grid-template-columns: 1fr; }
+    .paradox-observation { min-height: auto; }
+}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="topbar">
+  <strong>THE OBSERVER</strong>
+  <div class="status"><span class="dot"></span> ARCHIVE STATUS: UNRESOLVED</div>
+</header>
+
+<main>
+  <section class="hero" style="border:0">
+    <div class="eyebrow">Personal archive / Entry 001</div>
+    <h1>THE <span>OBSERVER.</span></h1>
+    <p class="subtitle">“Perception Defines Reality.”<br>What you see is not always what exists.</p>
+    <div class="side-mark">NOT EVERYTHING REVEALS ITSELF</div>
+    <div class="hero-bottom"><span>SUBJECT: IBNE SHIHAB</span><span>SCROLL TO INVESTIGATE ↓</span></div>
+  </section>
+
+  <section id="anomaly">
+    <div class="section-head"><h2>The first anomaly</h2><span class="section-no">01 / OBSERVATION</span></div>
+    <div class="intro-grid">
+      <p class="large">Every answer changes the question. Every perspective hides something beyond its frame.</p>
+      <p>This is not a conventional biography. It is a collection of observations, unfinished thoughts and fragments of identity. Some records are visible. Others require you to look more carefully.<br><br>There is no promise that the archive will explain everything.</p>
+    </div>
+  </section>
+
+  <section id="records">
+    <div class="section-head"><h2>Recovered fragments</h2><span class="section-no">02 / RECORDS</span></div>
+    <div class="archive-grid">
+      <button class="record" data-record="memory">
+        <span class="id">FRAGMENT 001 / MEMORY</span><h3>The past is edited.</h3>
+        <p>Memory is not a perfect recording. It is a story retold by the person who survived it.</p><span class="open">OPEN RECORD ↗</span>
+      </button>
+      <button class="record" data-record="identity">
+        <span class="id">FRAGMENT 002 / IDENTITY</span><h3>A name is a label.</h3>
+        <p>What remains when every label, expectation and borrowed definition is removed?</p><span class="open">OPEN RECORD ↗</span>
+      </button>
+      <button class="record" data-record="silence">
+        <span class="id">FRAGMENT 003 / SILENCE</span><h3>Silence has weight.</h3>
+        <p>Not every absence is empty. Some things are loudest when they are never said.</p><span class="open">OPEN RECORD ↗</span>
+      </button>
+    </div>
+    <div class="signal">
+      <p id="signalText">Three fragments. One missing connection.</p>
+      <button id="signalButton">SCAN FOR SIGNAL</button>
+    </div>
+  </section>
+
+  <section id="interrogation">
+    <div class="section-head"><h2>Interrogation</h2><span class="section-no">03 / SELF</span></div>
+    <div class="question">
+      <blockquote id="questionText">If nobody could observe you, which parts of you would still exist?</blockquote>
+      <button class="action" id="answerButton">REVEAL AN INTERPRETATION</button>
+      <div class="answer" id="answerText" aria-live="polite">No response recorded.</div>
+    </div>
+  </section>
+
+  <section id="unseen" class="lens-section">
+  <div class="section-head">
+    <h2>The unseen layer</h2>
+    <span class="section-no">04 / CHOICE</span>
+  </div>
+  <p class="lens-intro">An observation is never neutral. Choose the lens through which you interpret this archive. Your choice will reveal a different reading of the same mystery.</p>
+
+  <div class="lens-options">
+    <button class="lens-choice" data-lens="observer">
+      <small>LENS 001</small>
+      <strong>The Observer</strong>
+      <span>Watch carefully. Decide slowly.</span>
+    </button>
+    <button class="lens-choice" data-lens="architect">
+      <small>LENS 002</small>
+      <strong>The Architect</strong>
+      <span>Search for patterns beneath the surface.</span>
+    </button>
+    <button class="lens-choice" data-lens="unknown">
+      <small>LENS 003</small>
+      <strong>The Unknown</strong>
+      <span>Accept that some questions resist answers.</span>
+    </button>
+  </div>
+
+  <div class="lens-result" id="lensResult" aria-live="polite">No lens selected. The archive is waiting for your interpretation.</div>
+
+  <div class="dossier" id="visitorDossier">
+    <label for="dossierCode">SEALED DOSSIER / ACCESS PHRASE REQUIRED</label>
+    <div class="dossier-row">
+      <input id="dossierCode" type="text" placeholder="Enter the phrase..." autocomplete="off" spellcheck="false">
+      <button id="dossierSubmit" type="button">REQUEST ACCESS</button>
+    </div>
+    <p class="dossier-message" id="dossierMessage" aria-live="polite">Hint: the phrase describes a willingness to accept uncertainty.</p>
+  </div>
+</section>
+<section id="console">
+    <div class="section-head"><h2>Living archive</h2><span class="section-no">04 / SYSTEM LOG</span></div>
+    <div class="archive-console" id="consoleText" aria-live="polite">
+      <div>&gt; Archive initialized.</div>
+      <div>&gt; Visitor detected.</div>
+      <div class="red">&gt; Some records remain inaccessible.</div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div><div class="eyebrow">End of visible record</div><h2>Remain curious.</h2><p style="color:var(--muted);line-height:1.8;max-width:450px">The archive ends here. The questions do not.</p></div>
+    <a class="action" href="#anomaly">BEGIN AGAIN ↗</a>
+  </section>
+<section id="final-paradox" class="paradox-section">
+    <div class="paradox-kicker">Phase 05 / The last question</div>
+    <h2 class="paradox-title">THE FINAL<br>PARADOX.</h2>
+    <p class="paradox-intro">
+        Every observation reveals something. Every interpretation leaves something behind.
+        Examine all three perspectives. Then decide whether the archive deserves its final record.
+    </p>
+
+    <div class="paradox-observations">
+        <button type="button" class="paradox-observation" data-paradox-choice="witness">
+            <span>OBSERVATION 001</span>
+            <strong>The Witness</strong>
+            <small>You can observe a thing without fully becoming its meaning.</small>
+        </button>
+        <button type="button" class="paradox-observation" data-paradox-choice="mirror">
+            <span>OBSERVATION 002</span>
+            <strong>The Mirror</strong>
+            <small>What you notice may reveal as much about you as what you observe.</small>
+        </button>
+        <button type="button" class="paradox-observation" data-paradox-choice="unknown">
+            <span>OBSERVATION 003</span>
+            <strong>The Unknown</strong>
+            <small>Some truths become smaller the moment you believe you have contained them.</small>
+        </button>
+    </div>
+
+    <div id="paradoxInterpretation" class="paradox-interpretation" aria-live="polite">
+        No observation recorded. Choose each perspective to continue.
+    </div>
+
+    <div class="paradox-progress">
+        OBSERVATIONS RECORDED: <strong id="paradoxCount">0 / 3</strong>
+    </div>
+
+    <button type="button" id="revealFinalRecord" class="paradox-unlock">
+        EXAMINE FINAL RECORD
+    </button>
+
+    <p id="paradoxStatus" class="paradox-status" aria-live="polite">
+        The final record remains sealed.
+    </p>
+
+    <article id="finalRecord006" class="paradox-record" aria-live="polite">
+        <div class="paradox-record-label">RECOVERED FRAGMENT / RECORD 006</div>
+        <h3>The archive was never the observer.</h3>
+        <p>
+            The archive was built from the questions you asked, the meanings you searched for,
+            and the fragments you chose to keep. It can reflect your perspective, but it cannot
+            contain the whole of you.
+        </p>
+        <p>
+            The final paradox is this: the closer you come to defining yourself, the more clearly
+            you may see what remains beyond the definition.
+        </p>
+        <p>
+            You were never only the witness. You were also the one deciding where to look.
+        </p>
+        <div class="paradox-signature">END OF RECORD // BEGIN AGAIN</div>
+    </article>
+</section>
+</main>
+
+<footer><span>THE OBSERVER / IBNE SHIHAB</span><span>PERCEPTION DEFINES REALITY</span><span>© <span id="year"></span> — RECORD IN PROGRESS</span></footer>
+
+<button class="secret-button" id="secretButton" aria-label="Open sealed record" title="A sealed record">∴</button>
+<div id="toast" role="status"></div>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-card">
+    <button class="close" id="closeModal" aria-label="Close">×</button>
+    <div class="eyebrow" id="modalCode">SEALED RECORD / 004</div>
+    <h2 id="modalTitle">The missing observer.</h2>
+    <p id="modalBody">You found a record that was not listed in the archive. Discovery does not guarantee understanding.</p>
+    <p class="hidden-text" id="extraSecret">A system can describe the observer. It cannot decide what the observer means.</p>
+    <button class="action" id="deeperButton">EXAMINE DEEPER</button>
+  </div>
+</div>
+
+<script>
+const $=s=>document.querySelector(s);
+const log=message=>{
+  const line=document.createElement('div');
+  line.textContent='> '+message;
+  $('#consoleText').appendChild(line);
+  while($('#consoleText').children.length>8)$('#consoleText').firstElementChild.remove();
+};
+const toast=message=>{
+  const el=$('#toast');el.textContent=message;el.style.display='block';
+  clearTimeout(toast.timer);toast.timer=setTimeout(()=>el.style.display='none',2600);
+};
+const modal=$('#modal');
+const openModal=()=>{
+  modal.classList.add('show');
+  $('#extraSecret').style.display='none';
+  $('#deeperButton').textContent='EXAMINE DEEPER';
+  log('Sealed record 004 accessed.');
+};
+const closeModal=()=>modal.classList.remove('show');
+$('#secretButton').addEventListener('click',openModal);
+$('#closeModal').addEventListener('click',closeModal);
+modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape')closeModal();
+  if(e.key.length===1&&/^[a-z]$/i.test(e.key)){
+    typed=(typed+e.key.toLowerCase()).slice(-8);
+    if(typed==='observer'){openModal();toast('UNLISTED ACCESS ACCEPTED');typed='';}
+  }
+});
+let typed='';
+const records={memory:['MEMORY / 001','The reconstruction','A remembered event is shaped by emotion, repetition and the details that never made it into the story.'],identity:['IDENTITY / 002','The unfinished self','Identity may be less like a fixed object and more like a question answered differently over time.'],silence:['SILENCE / 003','The unspoken','Silence can protect a truth, conceal it, or give it room to change.']};
+const opened=new Set();
+document.querySelectorAll('[data-record]').forEach(card=>{
+  card.addEventListener('click',()=>{
+    const key=card.dataset.record;
+    const item=records[key];
+    $('#modalCode').textContent='RECOVERED FRAGMENT / '+item[0];
+    $('#modalTitle').textContent=item[1];
+    $('#modalBody').textContent=item[2];
+    openModal();
+    opened.add(key);
+    if(opened.size===3){
+      $('#signalText').textContent='All three fragments recovered. A connection may now exist.';
+      $('#signalButton').textContent='OPEN THE CONNECTION';
+      log('Three fragments recovered. Connection detected.');
+    }
+  });
+});
+$('#signalButton').addEventListener('click',()=>{
+  if(opened.size===3){
+    $('#modalCode').textContent='CONNECTION / 000';
+    $('#modalTitle').textContent='The observer is part of the record.';
+    $('#modalBody').textContent='You did not merely read the archive. Your choices determined which records became visible to you.';
+    openModal();
+  }else{
+    toast('SIGNAL INCOMPLETE — OPEN ALL THREE FRAGMENTS');
+    log('Signal scan incomplete.');
+  }
+});
+let answerIndex=0;
+const answers=[
+  'Perhaps the person you are when no performance is required is the closest version of you.',
+  'Perhaps identity is not a hidden object to discover, but a pattern of choices you keep making.',
+  'There may be no final answer. The act of asking is itself part of the evidence.'
+];
+$('#answerButton').addEventListener('click',()=>{
+  $('#answerText').textContent=answers[answerIndex%answers.length];
+  answerIndex++;
+  log('Interpretation requested.');
+});
+$('#deeperButton').addEventListener('click',()=>{
+  $('#extraSecret').style.display='block';
+  $('#deeperButton').textContent='RECORD EXAMINED';
+  log('Additional layer revealed.');
+});
+window.addEventListener('scroll',()=>{
+  const max=document.documentElement.scrollHeight-window.innerHeight;
+  $('#progress').style.width=(max>0?window.scrollY/max*100:0)+'%';
+},{passive:true});
+$('#year').textContent=new Date().getFullYear();
+</script>
+<script>
+(function(){
+  const lensMessages = {
+    observer: "You chose to observe. Distance can reveal details, but it can also become a hiding place. What you notice may say as much about you as it says about the subject.",
+    architect: "You chose to search for structure. Patterns can explain a system, but not every coincidence is a message. Learn to distinguish the design from the meaning you assign to it.",
+    unknown: "You chose uncertainty. Not every mystery needs to be conquered. Sometimes the most honest conclusion is that the evidence is not yet enough."
+  };
+
+  const choices = document.querySelectorAll(".lens-choice");
+  const result = document.getElementById("lensResult");
+
+  choices.forEach(function(button){
+    button.addEventListener("click", function(){
+      choices.forEach(function(item){ item.classList.remove("active"); });
+      button.classList.add("active");
+      result.textContent = lensMessages[button.dataset.lens];
+      const log = document.getElementById("consoleText");
+      if(log){
+        const line = document.createElement("div");
+        line.textContent = "> Lens selected: " + button.dataset.lens + ".";
+        log.appendChild(line);
+        while(log.children.length > 8) log.firstElementChild.remove();
+      }
+    });
+  });
+
+  const input = document.getElementById("dossierCode");
+  const submit = document.getElementById("dossierSubmit");
+  const message = document.getElementById("dossierMessage");
+  const dossier = document.getElementById("visitorDossier");
+
+  function requestAccess(){
+    const phrase = input.value.trim().replace(/\s+/g, " ").toUpperCase();
+    if(phrase === "I ACCEPT THE UNKNOWN"){
+      dossier.classList.add("dossier-unlocked");
+      message.textContent = "ACCESS GRANTED — DOSSIER 005: The archive cannot define you. The lens you choose changes the story you see, but it does not contain the whole truth. You are more than any single interpretation.";
+      submit.textContent = "DOSSIER OPEN";
+      input.disabled = true;
+      submit.disabled = true;
+      submit.style.opacity = ".65";
+    } else {
+      message.textContent = "ACCESS DENIED — The phrase is not recognised. Hint: I ACCEPT THE UNKNOWN.";
+    }
+  }
+
+  submit.addEventListener("click", requestAccess);
+  input.addEventListener("keydown", function(event){
+    if(event.key === "Enter") requestAccess();
+  });
+})();
+</script>
+<script>
+(function () {
+    const choices = Array.from(document.querySelectorAll("[data-paradox-choice]"));
+    const countLabel = document.getElementById("paradoxCount");
+    const interpretation = document.getElementById("paradoxInterpretation");
+    const status = document.getElementById("paradoxStatus");
+    const revealButton = document.getElementById("revealFinalRecord");
+    const finalRecord = document.getElementById("finalRecord006");
+
+    if (!choices.length || !countLabel || !interpretation || !status || !revealButton || !finalRecord) {
+        return;
+    }
+
+    const messages = {
+        witness: "THE WITNESS: You can see a pattern without reducing the entire world to that pattern.",
+        mirror: "THE MIRROR: The meaning you find is shaped partly by the person doing the looking.",
+        unknown: "THE UNKNOWN: Understanding is valuable, but certainty is not the same as completeness."
+    };
+
+    const recorded = new Set();
+
+    choices.forEach(function (button) {
+        button.addEventListener("click", function () {
+            const key = button.getAttribute("data-paradox-choice");
+            recorded.add(key);
+            button.classList.add("selected");
+            button.setAttribute("aria-pressed", "true");
+            interpretation.textContent = messages[key] || "Observation recorded.";
+            countLabel.textContent = recorded.size + " / " + choices.length;
+
+            if (recorded.size === choices.length) {
+                status.textContent = "All three observations are recorded. The archive is ready for examination.";
+            } else {
+                status.textContent = "Observation recorded. Continue until all three perspectives have been examined.";
+            }
+        });
+    });
+
+    revealButton.addEventListener("click", function () {
+        if (recorded.size < choices.length) {
+            status.textContent = "The record remains sealed. Examine all three observations first.";
+            return;
+        }
+
+        const lensSelected = document.querySelector(
+            ".lens-choice.active, .lens-card.active, [data-lens].active, [data-lens][aria-pressed='true']"
+        );
+
+        const bodyText = document.body.innerText || "";
+        const dossierUnlocked =
+            bodyText.includes("ACCESS GRANTED") &&
+            bodyText.includes("DOSSIER 005");
+
+        if (!lensSelected) {
+            status.textContent = "One condition remains: return to The Unseen Layer and choose a lens.";
+            return;
+        }
+
+        if (!dossierUnlocked) {
+            status.textContent = "One condition remains: unlock Dossier 005 using I ACCEPT THE UNKNOWN.";
+            return;
+        }
+
+        finalRecord.classList.add("revealed");
+        status.textContent = "ACCESS GRANTED. RECORD 006 HAS BEEN RECOVERED.";
+        revealButton.textContent = "RECORD 006 RECOVERED";
+        revealButton.disabled = true;
+        finalRecord.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+})();
+</script>
+</body>
+</html>
+
+

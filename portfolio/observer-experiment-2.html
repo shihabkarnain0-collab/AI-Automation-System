@@ -1,0 +1,462 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+<meta name="description" content="THE OBSERVER — an unidentified digital artifact by Ibne Shihab.">
+<title>THE OBSERVER — Archive 001</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700;800&display=swap');
+
+:root{
+  --bg:#080808;--fg:#e9e6df;--muted:#77756f;
+  --red:#9e252d;--line:rgba(230,226,215,.15);
+  --mono:"DM Mono",monospace;--sans:"Manrope",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scrollbar-color:#642027 #080808}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);overflow-x:hidden}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:20;opacity:.12;
+background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.92' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.17'/%3E%3C/svg%3E")}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit}
+::selection{background:#8c1e27;color:#fff}
+.mono{font-family:var(--mono);text-transform:uppercase;letter-spacing:.12em;font-size:10px}
+.muted{color:var(--muted)}
+#progress{position:fixed;z-index:50;top:0;left:0;height:2px;width:0;background:var(--red)}
+.topbar{position:fixed;z-index:30;top:0;left:0;width:100%;display:flex;align-items:center;justify-content:space-between;padding:24px 5vw;border-bottom:1px solid transparent;transition:.3s}
+.topbar.scrolled{background:rgba(8,8,8,.88);backdrop-filter:blur(16px);border-color:var(--line)}
+.brand{font-size:11px;letter-spacing:.2em;font-weight:700}
+.status{display:flex;align-items:center;gap:10px;color:#8b8881}
+.status-dot{width:6px;height:6px;border-radius:50%;background:#a62b34;box-shadow:0 0 12px #a62b34;animation:pulse 2s infinite}
+.menu-trigger{border:0;background:none;cursor:pointer;font-size:10px;letter-spacing:.15em}
+main{position:relative}
+.hero{min-height:100svh;position:relative;display:flex;flex-direction:column;justify-content:center;padding:130px 8vw 80px;overflow:hidden}
+.hero::before{content:"";position:absolute;width:min(65vw,700px);aspect-ratio:1;right:-16%;top:5%;border:1px solid rgba(155,32,43,.15);border-radius:50%;box-shadow:0 0 100px rgba(112,17,26,.06),inset 0 0 120px rgba(112,17,26,.04)}
+.hero::after{content:"";position:absolute;width:min(38vw,410px);aspect-ratio:1;right:0;top:22%;border:1px solid rgba(220,215,205,.08);transform:rotate(31deg)}
+.hero-meta{display:flex;justify-content:space-between;max-width:700px;color:var(--muted);margin-bottom:38px}
+.eyebrow{color:#ad555a}
+.hero h1{position:relative;z-index:2;margin:0;font-size:clamp(58px,13vw,174px);line-height:.77;letter-spacing:-.105em;font-weight:500}
+.hero h1 span{display:block}
+.hero h1 .second{color:transparent;-webkit-text-stroke:1px rgba(233,230,223,.65);margin-left:clamp(20px,9vw,120px)}
+.hero-bottom{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;max-width:850px;margin-top:55px}
+.hero-description{max-width:300px;font-size:13px;line-height:1.9;color:#a5a198}
+.enter{display:inline-flex;align-items:center;gap:16px;border:1px solid #48413d;background:transparent;padding:16px 18px;cursor:pointer;transition:.3s}
+.enter:hover{background:#8b2029;border-color:#8b2029}
+.enter .arrow{font-size:20px;transition:transform .3s}
+.enter:hover .arrow{transform:translate(4px,-4px)}
+.corner{position:absolute;bottom:30px;right:5vw;color:#666}
+.section{padding:130px 8vw;border-top:1px solid var(--line)}
+.section-label{display:flex;align-items:center;gap:14px;color:var(--muted);margin-bottom:48px}
+.section-label::before{content:"";width:30px;height:1px;background:var(--red)}
+.statement{max-width:1000px;font-size:clamp(30px,6vw,76px);font-weight:400;letter-spacing:-.065em;line-height:1.13;margin:0}
+.statement .obscured{color:#343330;transition:color .8s}
+.statement .obscured.revealed{color:#b03a42}
+.small-note{max-width:390px;color:var(--muted);font-size:12px;line-height:1.9;margin:38px 0 0 auto}
+.archive{background:#0b0b0b}
+.archive-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:44px}
+.archive-head h2{font-size:clamp(32px,6vw,66px);letter-spacing:-.07em;font-weight:400;margin:0}
+.archive-head p{max-width:200px;line-height:1.7;color:var(--muted);font-size:11px}
+.fragments{border-top:1px solid var(--line)}
+.fragment{display:grid;grid-template-columns:90px 1fr 40px;align-items:center;gap:20px;padding:27px 0;border-bottom:1px solid var(--line);cursor:pointer;transition:padding .3s}
+.fragment:hover{padding-left:12px}
+.fragment-number{color:var(--red)}
+.fragment h3{margin:0;font-size:clamp(18px,3vw,30px);font-weight:400;letter-spacing:-.04em}
+.fragment p{margin:8px 0 0;color:var(--muted);font-size:11px;line-height:1.7}
+.fragment-icon{font-size:20px;color:#6b6560;transition:transform .3s}
+.fragment:hover .fragment-icon{transform:rotate(45deg);color:var(--red)}
+.fragment-content{display:none;grid-column:2/4;padding:8px 25px 15px 0;color:#b2ada4;font-size:13px;line-height:1.9;max-width:650px}
+.fragment.open .fragment-content{display:block;animation:appear .5s both}
+.fragment.open .fragment-icon{transform:rotate(45deg);color:var(--red)}
+.interrogation{min-height:480px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden}
+.interrogation::before{content:"";position:absolute;width:320px;height:320px;border:1px solid rgba(157,37,45,.15);border-radius:50%;box-shadow:0 0 100px rgba(157,37,45,.06)}
+.interrogation .question{z-index:1;color:#7d292e;font-size:10px;letter-spacing:.24em}
+.interrogation h2{z-index:1;font-size:clamp(35px,7vw,83px);font-weight:400;letter-spacing:-.075em;max-width:780px;line-height:1.05;margin:25px 0}
+.interrogation p{z-index:1;color:var(--muted);font-size:12px}
+.answer{z-index:1;margin-top:24px;min-width:190px;min-height:52px;background:transparent;border:1px solid #514342;cursor:pointer;letter-spacing:.12em;font-size:10px;transition:.25s}
+.answer:hover{background:#761b23;border-color:#761b23}
+.answer:disabled{opacity:.6;cursor:default}
+.answer-result{z-index:1;margin-top:22px;min-height:20px;color:#c17a7e;font:11px var(--mono);letter-spacing:.08em}
+.identity{display:grid;grid-template-columns:1fr 1fr;gap:10vw}
+.identity h2{font-size:clamp(38px,7vw,80px);font-weight:400;letter-spacing:-.075em;line-height:.98;margin:0}
+.identity-copy{align-self:end;color:#a5a198;font-size:13px;line-height:2;max-width:450px}
+.identity-copy .name{color:var(--fg);font-size:19px;letter-spacing:.03em}
+.contact{display:flex;justify-content:space-between;align-items:center;gap:25px;flex-wrap:wrap}
+.contact h2{font-size:clamp(32px,7vw,78px);font-weight:400;letter-spacing:-.07em;margin:0}
+.contact-link{font-size:11px;letter-spacing:.15em;border-bottom:1px solid var(--red);padding-bottom:10px}
+footer{padding:25px 5vw;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:1px solid var(--line);color:#69655f}
+#veil{position:fixed;z-index:60;inset:0;background:#080808;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;transition:opacity .8s,visibility .8s}
+#veil.gone{opacity:0;visibility:hidden;pointer-events:none}
+#veil .seal{font:10px var(--mono);letter-spacing:.2em;color:#9b4248;margin-bottom:40px}
+#veil h2{font-size:clamp(23px,5vw,54px);text-align:center;max-width:750px;line-height:1.25;letter-spacing:-.04em;font-weight:400;margin:0}
+#veil p{font:10px var(--mono);letter-spacing:.12em;color:#69655f;margin-top:35px;text-align:center}
+#veil button{margin-top:40px;background:none;border:1px solid #4d3738;padding:15px 23px;cursor:pointer;font:10px var(--mono);letter-spacing:.16em;transition:.3s}
+#veil button:hover{background:#81212a}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .8s,transform .8s}
+.reveal.visible{opacity:1;transform:none}
+@keyframes pulse{50%{opacity:.3;box-shadow:0 0 2px #a62b34}}
+@keyframes appear{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media(max-width:650px){
+ .topbar{padding:20px 6vw}.status{display:none}
+ .hero{padding:130px 7vw 85px;min-height:90svh}
+ .hero-meta{font-size:8px;gap:14px}.hero h1{font-size:clamp(58px,17vw,110px)}
+ .hero-bottom{align-items:flex-start;flex-direction:column;margin-top:40px}
+ .corner{bottom:17px}.section{padding:85px 7vw}
+ .archive-head{align-items:flex-start;flex-direction:column}
+ .fragment{grid-template-columns:42px 1fr 22px;gap:12px;padding:22px 0}
+ .fragment-content{grid-column:1/4;padding:8px 0}
+ .identity{grid-template-columns:1fr;gap:35px}
+ .interrogation{min-height:420px}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}
+}
+
+/* HIDDEN INTELLIGENCE LAYER */
+.secret-trigger{
+  position:relative;border:0;background:transparent;color:#713038;
+  cursor:pointer;font:10px var(--mono);letter-spacing:.12em;
+  padding:8px;transition:color .3s,text-shadow .3s
+}
+.secret-trigger:hover{color:#f0d6d4;text-shadow:0 0 15px #a52c38}
+.secret-trigger::after{
+  content:"";position:absolute;inset:2px;border:1px solid transparent;
+  transition:border-color .3s
+}
+.secret-trigger:hover::after{border-color:#6d252b}
+#secretLayer{
+  position:fixed;inset:0;z-index:80;background:rgba(5,5,5,.97);
+  display:none;align-items:center;justify-content:center;padding:25px;
+  backdrop-filter:blur(15px)
+}
+#secretLayer.active{display:flex;animation:secretAppear .5s both}
+.secret-panel{width:min(650px,100%);border:1px solid #492328;padding:clamp(24px,6vw,55px);position:relative}
+.secret-panel::before{content:"";position:absolute;top:-1px;left:25px;width:70px;height:2px;background:#a32b35}
+.secret-code{font:10px var(--mono);letter-spacing:.2em;color:#b6535a}
+.secret-panel h2{font-size:clamp(34px,7vw,65px);letter-spacing:-.07em;line-height:1;margin:28px 0;font-weight:400}
+.secret-panel p{font-size:13px;color:#a5a198;line-height:2;max-width:470px}
+.secret-close{position:absolute;right:20px;top:18px;border:1px solid #49383a;background:none;padding:9px 12px;cursor:pointer;font:10px var(--mono)}
+.secret-close:hover{background:#70202a}
+.secret-output{margin-top:30px;padding-top:20px;border-top:1px solid var(--line);font:11px var(--mono);color:#bd7277;line-height:2;white-space:pre-line}
+.secret-count{color:#9c454b}
+#secretLayer button:focus-visible,.secret-trigger:focus-visible{outline:2px solid #b64a53;outline-offset:4px}
+@keyframes secretAppear{from{opacity:0}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){#secretLayer.active{animation:none}}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<div id="veil">
+  <div class="seal">UNREGISTERED OBJECT / 001</div>
+  <h2>This interface was not meant<br>to be found.</h2>
+  <p>NO IDENTITY CONFIRMED &nbsp; / &nbsp; SIGNAL DETECTED</p>
+  <button id="enter">ACKNOWLEDGE SIGNAL ↗</button>
+</div>
+
+<header class="topbar" id="topbar">
+  <a class="brand" href="#top">T / O</a>
+  <div class="status mono"><span class="status-dot"></span> AN UNKNOWN PRESENCE</div>
+  <button class="menu-trigger" id="coordinates">[ 00 : 00 : 00 ]</button>
+</header>
+
+<main>
+<section class="hero" id="top">
+  <div class="hero-meta mono">
+    <span class="eyebrow">ARCHIVE 001 — PRIVATE</span>
+    <span>STATUS: UNRESOLVED</span>
+  </div>
+  <h1><span>THE</span><span class="second">OBSERVER</span></h1>
+  <div class="hero-bottom">
+    <p class="hero-description">Some things remain invisible until someone decides to look. You are here now. That changes something.</p>
+    <a class="enter" href="#archive"><span class="mono">EXPLORE THE UNKNOWN</span><span class="arrow">↘</span></a>
+  </div>
+  <div class="corner mono">DO NOT ASSUME YOU HAVE SEEN EVERYTHING.</div>
+</section>
+
+<section class="section" id="signal">
+  <div class="section-label mono">01 / THE FIRST ANOMALY</div>
+  <div class="reveal">
+    <p class="statement">Reality is not always what exists. Sometimes it is <span class="obscured" id="hiddenWord">what you have been allowed to notice.</span></p>
+    <p class="small-note">There is a difference between looking at something and seeing it. Most never discover where that difference begins.</p>
+  </div>
+</section>
+
+<section class="section archive" id="archive">
+  <div class="section-label mono">02 / RECOVERED FRAGMENTS</div>
+  <div class="archive-head reveal">
+    <h2>Not everything<br>is what it appears.</h2>
+    <p>Three fragments recovered.<br>One truth deliberately withheld.</p>
+  </div>
+  <div class="fragments reveal">
+    <article class="fragment" tabindex="0" role="button" aria-expanded="false">
+      <div class="fragment-number mono">F—01</div>
+      <div><h3>The Observer Effect</h3><p>THE ACT OF LOOKING CHANGES THE LOOKER.</p></div>
+      <div class="fragment-icon">↗</div>
+      <div class="fragment-content">You came searching for an answer. But every answer alters the question. What you believe you have discovered may be the part of yourself you were not prepared to meet.</div>
+    </article>
+    <article class="fragment" tabindex="0" role="button" aria-expanded="false">
+      <div class="fragment-number mono">F—02</div>
+      <div><h3>The Missing Record</h3><p>ONE PIECE OF INFORMATION IS ABSENT.</p></div>
+      <div class="fragment-icon">↗</div>
+      <div class="fragment-content">The archive records what happened. It cannot record what almost happened. The missing record is not an error. It is the space where another version of reality might have existed.</div>
+    </article>
+    <article class="fragment" tabindex="0" role="button" aria-expanded="false">
+      <div class="fragment-number mono">F—03</div>
+      <div><h3>The Unasked Question</h3><p>THIS FILE HAS NO ORIGINAL AUTHOR.</p></div>
+      <div class="fragment-icon">↗</div>
+      <div class="fragment-content">Who are you when nobody is watching? Who are you when every label disappears? This fragment has no conclusion. Its answer belongs to the person who opens it.</div>
+    </article>
+  </div>
+</section>
+
+<section class="section interrogation" id="test">
+  <div class="question mono">03 / INTERACTION REQUIRED</div>
+  <h2 class="reveal" id="question">Do you believe everything you see?</h2>
+  <p id="subquestion">Your response will not be stored.</p>
+  <button class="answer" id="answer">I AM NOT CERTAIN ↗</button>
+  <div class="answer-result" id="result" aria-live="polite"></div>
+</section>
+
+<section class="section identity" id="identity">
+  <div class="reveal">
+    <div class="section-label mono">04 / THE NAME BEHIND THE SIGNAL</div>
+    <h2>Perception<br>Defines<br><span style="color:#9b3038">Reality.</span></h2>
+  </div>
+  <div class="identity-copy reveal">
+    <p class="mono muted">IDENTITY / PARTIALLY DISCLOSED</p>
+    <p class="name">Ibne Shihab</p>
+    An independent mind exploring the space between technology, perception, and possibility. This is not a list of achievements. It is a record of curiosity — still being written.
+    <p class="mono" style="color:#9b5559;margin-top:35px">OBSERVE. QUESTION. TRANSCEND.</p>
+  </div>
+</section>
+
+<section class="section contact" id="contact">
+  <div>
+    <div class="section-label mono">05 / END OF VISIBLE RECORD</div>
+    <h2>The rest is<br>yet unwritten.</h2>
+  </div>
+  <a class="contact-link mono" href="mailto:your-email@example.com">ESTABLISH CONTACT ↗</a>
+</section>
+</main>
+
+<footer class="mono">
+  <span>THE OBSERVER © <span id="year"></span></span>
+  <span>NOT EVERYTHING REVEALS ITSELF.</span>
+  <a href="#top">RETURN TO THE BEGINNING ↑</a>
+</footer>
+
+<script>
+(() => {
+  const $ = (s) => document.querySelector(s);
+  const veil = $('#veil');
+  const enter = $('#enter');
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  enter.addEventListener('click', () => {
+    veil.classList.add('gone');
+    document.body.style.overflow = '';
+    sessionStorage.setItem('observerEntered', '1');
+  });
+
+  if (sessionStorage.getItem('observerEntered') === '1') {
+    veil.classList.add('gone');
+  }
+
+  document.body.style.overflow = 'hidden';
+  enter.addEventListener('click', () => { document.body.style.overflow = ''; });
+
+  const topbar = $('#topbar');
+  const progress = $('#progress');
+  function onScroll() {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.width = (max > 0 ? window.scrollY / max * 100 : 0) + '%';
+    topbar.classList.toggle('scrolled', window.scrollY > 25);
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  $('#year').textContent = new Date().getFullYear();
+
+  const clock = $('#coordinates');
+  function updateClock() {
+    const now = new Date();
+    clock.textContent = '[' +
+      String(now.getHours()).padStart(2,'0') + ' : ' +
+      String(now.getMinutes()).padStart(2,'0') + ' : ' +
+      String(now.getSeconds()).padStart(2,'0') + ' ]';
+  }
+  updateClock();
+  setInterval(updateClock, 1000);
+
+  document.querySelectorAll('.fragment').forEach((item) => {
+    function toggle() {
+      const open = item.classList.toggle('open');
+      item.setAttribute('aria-expanded', String(open));
+    }
+    item.addEventListener('click', toggle);
+    item.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggle();
+      }
+    });
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.12});
+  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+  const hiddenWord = $('#hiddenWord');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        hiddenWord.classList.add('revealed');
+        revealObserver.disconnect();
+      }
+    });
+  }, {threshold:0.6});
+  revealObserver.observe(hiddenWord);
+
+  const answer = $('#answer');
+  const question = $('#question');
+  const subquestion = $('#subquestion');
+  const result = $('#result');
+  const responses = [
+    ['Then you have already begun to see.', 'SIGNAL INTERPRETED / 01'],
+    ['Certainty is often the most convincing illusion.', 'ASSUMPTION DETECTED / 02'],
+    ['Good. Keep questioning what appears obvious.', 'OBSERVER STATUS: AWAKE / 03'],
+    ['The archive has no final answer for you.', 'RECORD CLOSED / 04']
+  ];
+  let answerCount = 0;
+  answer.addEventListener('click', () => {
+    const r = responses[answerCount % responses.length];
+    question.textContent = r[0];
+    subquestion.textContent = 'You may continue. Nothing here is asking you to believe.';
+    result.textContent = r[1];
+    answerCount++;
+    answer.textContent = answerCount >= responses.length ? 'ASK AGAIN ↗' : 'CONTINUE ↗';
+  });
+
+  if (!reduced) {
+    document.addEventListener('mousemove', (e) => {
+      document.documentElement.style.setProperty('--mx', e.clientX + 'px');
+      document.documentElement.style.setProperty('--my', e.clientY + 'px');
+    }, {passive:true});
+  }
+})();
+</script>
+<div id="secretLayer" role="dialog" aria-modal="true" aria-labelledby="secretTitle">
+  <div class="secret-panel">
+    <button class="secret-close" id="secretClose" aria-label="Close secret archive">CLOSE [ X ]</button>
+    <div class="secret-code">UNREGISTERED RECORD / 004</div>
+    <h2 id="secretTitle">You found<br>the other side.</h2>
+    <p id="secretDescription">The visible archive was only the entrance. What you do with a discovery matters more than the discovery itself.</p>
+    <div class="secret-output" id="secretOutput">ACCESS: LIMITED
+ORIGIN: UNKNOWN
+OBSERVER: PRESENT</div>
+  </div>
+</div>
+<button class="secret-trigger" id="hiddenGlyph" style="position:fixed;right:16px;bottom:14px;z-index:35" aria-label="Open hidden record" title="Unidentified signal">∴</button>
+<script>
+(() => {
+  const layer = document.getElementById('secretLayer');
+  const glyph = document.getElementById('hiddenGlyph');
+  const close = document.getElementById('secretClose');
+  const output = document.getElementById('secretOutput');
+  const description = document.getElementById('secretDescription');
+  const title = document.getElementById('secretTitle');
+  if (!layer || !glyph || !close) return;
+
+  let opened = false;
+  let previousFocus = null;
+  const openedFragments = new Set();
+  const secretSequence = ['o','b','s','e','r','v','e','r'];
+  let sequenceIndex = 0;
+
+  function openArchive(reason) {
+    previousFocus = document.activeElement;
+    layer.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    opened = true;
+
+    if (reason === 'sequence') {
+      title.innerHTML = 'You were<br>paying attention.';
+      description.textContent = 'The sequence was never announced on the screen. You discovered it yourself.';
+      output.textContent = 'ACCESS: SEQUENCE ACCEPTED\nRECORD: 004\nMESSAGE: OBSERVATION IS AN ACTION.';
+    } else if (reason === 'complete') {
+      title.innerHTML = 'Three records.<br>One observer.';
+      description.textContent = 'You opened every visible fragment. The archive has registered your curiosity.';
+      output.textContent = 'FRAGMENTS: 03 / 03\nACCESS: GRANTED\nNEXT STEP: QUESTION THE ARCHIVE.';
+    } else {
+      title.innerHTML = 'You found<br>the other side.';
+      description.textContent = 'The visible archive was only the entrance. What you do with a discovery matters more than the discovery itself.';
+      output.textContent = 'ACCESS: LIMITED\nORIGIN: UNKNOWN\nOBSERVER: PRESENT\n\nHINT: TYPE THE WORD THAT DEFINES THIS PLACE.';
+    }
+    close.focus();
+  }
+
+  function closeArchive() {
+    layer.classList.remove('active');
+    document.body.style.overflow = '';
+    if (previousFocus && previousFocus.focus) previousFocus.focus();
+    opened = false;
+  }
+
+  glyph.addEventListener('click', () => openArchive('glyph'));
+  close.addEventListener('click', closeArchive);
+
+  layer.addEventListener('click', (event) => {
+    if (event.target === layer) closeArchive();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && opened) {
+      closeArchive();
+      return;
+    }
+
+    if (event.ctrlKey || event.altKey || event.metaKey ||
+        event.target.matches('input, textarea, select, [contenteditable="true"]')) return;
+
+    const key = event.key.toLowerCase();
+    if (key === secretSequence[sequenceIndex]) {
+      sequenceIndex++;
+      if (sequenceIndex === secretSequence.length) {
+        sequenceIndex = 0;
+        openArchive('sequence');
+      }
+    } else {
+      sequenceIndex = key === secretSequence[0] ? 1 : 0;
+    }
+  });
+
+  document.querySelectorAll('.fragment').forEach((fragment, index) => {
+    fragment.addEventListener('click', () => {
+      if (fragment.classList.contains('open')) {
+        openedFragments.add(index);
+      } else {
+        openedFragments.delete(index);
+      }
+
+      if (openedFragments.size === 3) {
+        output.textContent = 'FRAGMENTS: 03 / 03\nSTATUS: ALL VISIBLE RECORDS EXAMINED';
+        description.textContent = 'A fourth record is now available. Look for the small ∴ symbol near the bottom-right corner.';
+        glyph.style.color = '#c14b54';
+        glyph.style.textShadow = '0 0 14px #a52c38';
+        glyph.title = 'Signal detected — open record 004';
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
+

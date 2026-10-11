@@ -1,0 +1,236 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+<meta name="description" content="THE OBSERVER — a living archive of perception, identity and unanswered questions.">
+<title>THE OBSERVER — Living Archive</title>
+<style>
+:root{--bg:#080808;--panel:#101010;--text:#e7e4df;--muted:#85817d;--red:#a51f30;--line:#292525;--serif:Georgia,'Times New Roman',serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}
+body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:10;opacity:.12;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E")}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.topbar{position:absolute;top:0;left:0;width:100%;padding:27px 6vw;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #ffffff12;font-size:10px;letter-spacing:2px;color:var(--muted)}
+.topbar strong{color:var(--text);font-weight:500}
+.status{display:flex;align-items:center;gap:9px}
+.dot{width:6px;height:6px;background:var(--red);border-radius:50%;box-shadow:0 0 12px #a51f30}
+.hero{min-height:94vh;padding:150px 9vw 100px;display:flex;flex-direction:column;justify-content:center;position:relative}
+.eyebrow{font-size:10px;letter-spacing:4px;color:var(--red);text-transform:uppercase}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(54px,12vw,150px);letter-spacing:-.075em;line-height:.84;margin:38px 0 30px}
+h1 span{display:block;color:#77716d;margin-left:clamp(20px,12vw,170px)}
+.subtitle{font-family:var(--serif);font-size:clamp(17px,2vw,24px);font-style:italic;color:#bcb6b0;max-width:480px;line-height:1.7}
+.hero-bottom{position:absolute;bottom:35px;left:9vw;right:9vw;display:flex;justify-content:space-between;color:var(--muted);font-size:9px;letter-spacing:2px}
+.side-mark{position:absolute;right:5vw;top:45%;writing-mode:vertical-rl;color:#57514e;font-size:9px;letter-spacing:4px}
+section{padding:110px 9vw;border-top:1px solid var(--line)}
+.section-head{display:flex;justify-content:space-between;gap:20px;align-items:baseline;margin-bottom:48px}
+.section-head h2{font:400 clamp(32px,5vw,58px) var(--serif);margin:0;letter-spacing:-2px}
+.section-no{font-size:10px;letter-spacing:2px;color:var(--red)}
+.intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:10vw}
+.intro-grid p{font:18px/1.9 var(--serif);color:#b8b2ad;margin:0}
+.intro-grid .large{font-size:clamp(24px,3vw,38px);line-height:1.45;color:var(--text)}
+.archive-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.record{background:linear-gradient(145deg,#141313,#0a0a0a);border:1px solid var(--line);padding:28px 23px;min-height:260px;display:flex;flex-direction:column;transition:border-color .3s,transform .3s;cursor:pointer;text-align:left;color:var(--text)}
+.record:hover,.record:focus-visible{border-color:var(--red);transform:translateY(-4px);outline:none}
+.record .id{font-size:9px;letter-spacing:2px;color:var(--red)}
+.record h3{font:400 27px var(--serif);margin:40px 0 12px}
+.record p{font-size:12px;line-height:1.8;color:var(--muted);margin:0}
+.record .open{margin-top:auto;padding-top:28px;font-size:9px;letter-spacing:2px;color:#aaa}
+.signal{margin-top:16px;border:1px solid #3c2024;background:#130d0e;padding:26px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.signal p{margin:0;color:#c6b9b8;font:italic 19px var(--serif)}
+.signal button,.action{background:transparent;color:var(--text);border:1px solid #514347;padding:12px 16px;letter-spacing:2px;font-size:9px;cursor:pointer}
+.signal button:hover,.action:hover{background:var(--red);border-color:var(--red)}
+.question{max-width:850px;margin:auto}
+.question blockquote{font:clamp(27px,5vw,52px)/1.35 var(--serif);margin:0 0 32px}
+.answer{min-height:54px;margin-top:25px;color:#aaa;font:italic 18px/1.8 var(--serif)}
+.archive-console{background:#050505;border:1px solid #302b2b;padding:24px;font:12px/2 monospace;color:#8f8984;min-height:120px}
+.archive-console .red{color:#cb5965}
+#contact{display:flex;justify-content:space-between;align-items:end;gap:30px}
+#contact h2{font:400 clamp(38px,7vw,80px) var(--serif);margin:20px 0}
+footer{padding:25px 9vw;display:flex;justify-content:space-between;gap:15px;color:#6f6965;font-size:9px;letter-spacing:1.5px;border-top:1px solid var(--line)}
+.progress{position:fixed;top:0;left:0;height:2px;background:var(--red);width:0;z-index:20}
+.secret-button{position:fixed;right:22px;bottom:22px;z-index:30;border:1px solid #4a3033;background:#0c090a;color:#c95b67;width:43px;height:43px;border-radius:50%;cursor:pointer;font:20px var(--serif)}
+.modal{display:none;position:fixed;inset:0;z-index:50;background:#000e;align-items:center;justify-content:center;padding:22px}
+.modal.show{display:flex}
+.modal-card{width:min(560px,100%);background:#0c0b0b;border:1px solid #4b292e;padding:clamp(24px,6vw,48px);position:relative;box-shadow:0 25px 100px #000}
+.modal-card h2{font:400 38px var(--serif);margin:25px 0}
+.modal-card p{font:16px/1.9 var(--serif);color:#aaa}
+.close{position:absolute;right:18px;top:15px;background:none;border:0;color:#aaa;font-size:24px;cursor:pointer}
+.hidden-text{display:none}
+#toast{position:fixed;bottom:78px;right:22px;z-index:35;background:#171011;border:1px solid #512a30;padding:12px 15px;color:#d4c5c4;font-size:11px;letter-spacing:1px;display:none}
+@media(max-width:700px){.hero{padding-left:7vw;padding-right:7vw}.hero-bottom{left:7vw;right:7vw}.side-mark{display:none}section{padding:75px 7vw}.intro-grid{grid-template-columns:1fr;gap:25px}.archive-grid{grid-template-columns:1fr}.record{min-height:210px}.record h3{margin-top:25px}.signal,#contact{align-items:flex-start;flex-direction:column}footer{padding:24px 7vw;flex-direction:column}.topbar{padding:22px 7vw}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="topbar">
+  <strong>THE OBSERVER</strong>
+  <div class="status"><span class="dot"></span> ARCHIVE STATUS: UNRESOLVED</div>
+</header>
+
+<main>
+  <section class="hero" style="border:0">
+    <div class="eyebrow">Personal archive / Entry 001</div>
+    <h1>THE <span>OBSERVER.</span></h1>
+    <p class="subtitle">“Perception Defines Reality.”<br>What you see is not always what exists.</p>
+    <div class="side-mark">NOT EVERYTHING REVEALS ITSELF</div>
+    <div class="hero-bottom"><span>SUBJECT: IBNE SHIHAB</span><span>SCROLL TO INVESTIGATE ↓</span></div>
+  </section>
+
+  <section id="anomaly">
+    <div class="section-head"><h2>The first anomaly</h2><span class="section-no">01 / OBSERVATION</span></div>
+    <div class="intro-grid">
+      <p class="large">Every answer changes the question. Every perspective hides something beyond its frame.</p>
+      <p>This is not a conventional biography. It is a collection of observations, unfinished thoughts and fragments of identity. Some records are visible. Others require you to look more carefully.<br><br>There is no promise that the archive will explain everything.</p>
+    </div>
+  </section>
+
+  <section id="records">
+    <div class="section-head"><h2>Recovered fragments</h2><span class="section-no">02 / RECORDS</span></div>
+    <div class="archive-grid">
+      <button class="record" data-record="memory">
+        <span class="id">FRAGMENT 001 / MEMORY</span><h3>The past is edited.</h3>
+        <p>Memory is not a perfect recording. It is a story retold by the person who survived it.</p><span class="open">OPEN RECORD ↗</span>
+      </button>
+      <button class="record" data-record="identity">
+        <span class="id">FRAGMENT 002 / IDENTITY</span><h3>A name is a label.</h3>
+        <p>What remains when every label, expectation and borrowed definition is removed?</p><span class="open">OPEN RECORD ↗</span>
+      </button>
+      <button class="record" data-record="silence">
+        <span class="id">FRAGMENT 003 / SILENCE</span><h3>Silence has weight.</h3>
+        <p>Not every absence is empty. Some things are loudest when they are never said.</p><span class="open">OPEN RECORD ↗</span>
+      </button>
+    </div>
+    <div class="signal">
+      <p id="signalText">Three fragments. One missing connection.</p>
+      <button id="signalButton">SCAN FOR SIGNAL</button>
+    </div>
+  </section>
+
+  <section id="interrogation">
+    <div class="section-head"><h2>Interrogation</h2><span class="section-no">03 / SELF</span></div>
+    <div class="question">
+      <blockquote id="questionText">If nobody could observe you, which parts of you would still exist?</blockquote>
+      <button class="action" id="answerButton">REVEAL AN INTERPRETATION</button>
+      <div class="answer" id="answerText" aria-live="polite">No response recorded.</div>
+    </div>
+  </section>
+
+  <section id="console">
+    <div class="section-head"><h2>Living archive</h2><span class="section-no">04 / SYSTEM LOG</span></div>
+    <div class="archive-console" id="consoleText" aria-live="polite">
+      <div>&gt; Archive initialized.</div>
+      <div>&gt; Visitor detected.</div>
+      <div class="red">&gt; Some records remain inaccessible.</div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div><div class="eyebrow">End of visible record</div><h2>Remain curious.</h2><p style="color:var(--muted);line-height:1.8;max-width:450px">The archive ends here. The questions do not.</p></div>
+    <a class="action" href="#anomaly">BEGIN AGAIN ↗</a>
+  </section>
+</main>
+
+<footer><span>THE OBSERVER / IBNE SHIHAB</span><span>PERCEPTION DEFINES REALITY</span><span>© <span id="year"></span> — RECORD IN PROGRESS</span></footer>
+
+<button class="secret-button" id="secretButton" aria-label="Open sealed record" title="A sealed record">∴</button>
+<div id="toast" role="status"></div>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-card">
+    <button class="close" id="closeModal" aria-label="Close">×</button>
+    <div class="eyebrow" id="modalCode">SEALED RECORD / 004</div>
+    <h2 id="modalTitle">The missing observer.</h2>
+    <p id="modalBody">You found a record that was not listed in the archive. Discovery does not guarantee understanding.</p>
+    <p class="hidden-text" id="extraSecret">A system can describe the observer. It cannot decide what the observer means.</p>
+    <button class="action" id="deeperButton">EXAMINE DEEPER</button>
+  </div>
+</div>
+
+<script>
+const $=s=>document.querySelector(s);
+const log=message=>{
+  const line=document.createElement('div');
+  line.textContent='> '+message;
+  $('#consoleText').appendChild(line);
+  while($('#consoleText').children.length>8)$('#consoleText').firstElementChild.remove();
+};
+const toast=message=>{
+  const el=$('#toast');el.textContent=message;el.style.display='block';
+  clearTimeout(toast.timer);toast.timer=setTimeout(()=>el.style.display='none',2600);
+};
+const modal=$('#modal');
+const openModal=()=>{
+  modal.classList.add('show');
+  $('#extraSecret').style.display='none';
+  $('#deeperButton').textContent='EXAMINE DEEPER';
+  log('Sealed record 004 accessed.');
+};
+const closeModal=()=>modal.classList.remove('show');
+$('#secretButton').addEventListener('click',openModal);
+$('#closeModal').addEventListener('click',closeModal);
+modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape')closeModal();
+  if(e.key.length===1&&/^[a-z]$/i.test(e.key)){
+    typed=(typed+e.key.toLowerCase()).slice(-8);
+    if(typed==='observer'){openModal();toast('UNLISTED ACCESS ACCEPTED');typed='';}
+  }
+});
+let typed='';
+const records={memory:['MEMORY / 001','The reconstruction','A remembered event is shaped by emotion, repetition and the details that never made it into the story.'],identity:['IDENTITY / 002','The unfinished self','Identity may be less like a fixed object and more like a question answered differently over time.'],silence:['SILENCE / 003','The unspoken','Silence can protect a truth, conceal it, or give it room to change.']};
+const opened=new Set();
+document.querySelectorAll('[data-record]').forEach(card=>{
+  card.addEventListener('click',()=>{
+    const key=card.dataset.record;
+    const item=records[key];
+    $('#modalCode').textContent='RECOVERED FRAGMENT / '+item[0];
+    $('#modalTitle').textContent=item[1];
+    $('#modalBody').textContent=item[2];
+    openModal();
+    opened.add(key);
+    if(opened.size===3){
+      $('#signalText').textContent='All three fragments recovered. A connection may now exist.';
+      $('#signalButton').textContent='OPEN THE CONNECTION';
+      log('Three fragments recovered. Connection detected.');
+    }
+  });
+});
+$('#signalButton').addEventListener('click',()=>{
+  if(opened.size===3){
+    $('#modalCode').textContent='CONNECTION / 000';
+    $('#modalTitle').textContent='The observer is part of the record.';
+    $('#modalBody').textContent='You did not merely read the archive. Your choices determined which records became visible to you.';
+    openModal();
+  }else{
+    toast('SIGNAL INCOMPLETE — OPEN ALL THREE FRAGMENTS');
+    log('Signal scan incomplete.');
+  }
+});
+let answerIndex=0;
+const answers=[
+  'Perhaps the person you are when no performance is required is the closest version of you.',
+  'Perhaps identity is not a hidden object to discover, but a pattern of choices you keep making.',
+  'There may be no final answer. The act of asking is itself part of the evidence.'
+];
+$('#answerButton').addEventListener('click',()=>{
+  $('#answerText').textContent=answers[answerIndex%answers.length];
+  answerIndex++;
+  log('Interpretation requested.');
+});
+$('#deeperButton').addEventListener('click',()=>{
+  $('#extraSecret').style.display='block';
+  $('#deeperButton').textContent='RECORD EXAMINED';
+  log('Additional layer revealed.');
+});
+window.addEventListener('scroll',()=>{
+  const max=document.documentElement.scrollHeight-window.innerHeight;
+  $('#progress').style.width=(max>0?window.scrollY/max*100:0)+'%';
+},{passive:true});
+$('#year').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>

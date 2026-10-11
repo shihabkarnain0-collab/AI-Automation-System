@@ -18,10 +18,14 @@ AI Automation System: Python pipeline for Star Tech Bangladesh laptop research, 
 
 ## Completed milestones
 - Initial project setup, portfolio website, JavaScript foundation, product price analysis
+- Python tests for calculate_discount: 6 tests pass (run inside apps/automation: python -m unittest test_analysis -v)
 - Price calculator (savings, discount %, validation, rounding): 6 tests pass with `node --test apps/javascript/priceCalculator.test.js`
 
 ## Known issues
-- No README or automated Python tests yet
+- No README yet
+- Python tests cover only calculate_discount (apps/automation/test_analysis.py); other analysis functions are untested
+- get_old_price falls back to the second number in the specs Price text, which may not be a real old price; check against real data
+- Scoring uses substring matching, so short terms like ai, m1, hp can match inside other words; review for scoring transparency
 - Old backup files exist (main_backup.py, research_backup.py, analytics_old, content_old, research_old); kept until approved for cleanup
 - node_modules/ is not in .gitignore yet (no npm packages installed so far)
 
@@ -29,8 +33,9 @@ AI Automation System: Python pipeline for Star Tech Bangladesh laptop research, 
 - .env and .venv are in .gitignore and are not tracked by Git
 
 ## Next task
-Decide how the JavaScript price calculator connects to the Python analysis step, after reading apps/automation/analysis.py.
+Check get_old_price against real research data (apps/automation/data/research/latest.json) to confirm the fallback old price is correct.
 
 ## Pending decisions (need approval)
 - Whether to remove or archive the old backup files
-- Integration method between JavaScript calculator and Python pipeline
+- Confirm: keep the JavaScript calculator separate from the Python pipeline (Python already has calculate_discount)
+

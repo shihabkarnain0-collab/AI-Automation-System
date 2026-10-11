@@ -1,4 +1,8 @@
-﻿const appName = "AI Automation System";
+﻿const productPrice = 80000;
+const discountPrice = 74490;
+const savings = productPrice - discountPrice;
 
-console.log(`Project: ${appName}`);
-console.log("JavaScript is working!");
+console.log("AI Automation System - Price Analysis");
+console.log(`Original price: ৳${productPrice}`);
+console.log(`Current price: ৳${discountPrice}`);
+console.log(`Customer saves: ৳${savings}`);

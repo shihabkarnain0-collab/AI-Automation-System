@@ -1,8 +1,11 @@
-﻿const productPrice = 80000;
+﻿const { calculatePriceSummary } = require("./priceCalculator");
+
+const productPrice = 80000;
 const discountPrice = 74490;
-const savings = productPrice - discountPrice;
+const summary = calculatePriceSummary(productPrice, discountPrice);
 
 console.log("AI Automation System - Price Analysis");
-console.log(`Original price: ৳${productPrice}`);
-console.log(`Current price: ৳${discountPrice}`);
-console.log(`Customer saves: ৳${savings}`);
+console.log(`Original price: ৳${summary.originalPrice}`);
+console.log(`Current price: ৳${summary.currentPrice}`);
+console.log(`Customer saves: ৳${summary.savings}`);
+console.log(`Discount: ${summary.discountPercent}%`);

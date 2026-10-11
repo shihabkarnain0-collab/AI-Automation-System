@@ -24,7 +24,7 @@ AI Automation System: Python pipeline for Star Tech Bangladesh laptop research, 
 ## Known issues
 - No README yet
 - Python tests cover only calculate_discount (apps/automation/test_analysis.py); other analysis functions are untested
-- get_old_price falls back to the second number in the specs Price text, which may not be a real old price; check against real data
+- get_old_price has a specs fallback that guesses the old price; checked on 2026-10-11: 0 of 26 products use it (10 have old_price directly), so low risk for now
 - Scoring uses substring matching, so short terms like ai, m1, hp can match inside other words; review for scoring transparency
 - Old backup files exist (main_backup.py, research_backup.py, analytics_old, content_old, research_old); kept until approved for cleanup
 - node_modules/ is not in .gitignore yet (no npm packages installed so far)
@@ -33,9 +33,10 @@ AI Automation System: Python pipeline for Star Tech Bangladesh laptop research, 
 - .env and .venv are in .gitignore and are not tracked by Git
 
 ## Next task
-Check get_old_price against real research data (apps/automation/data/research/latest.json) to confirm the fallback old price is correct.
+Review scoring term matching in analysis.py (short terms like ai, m1, hp can match inside other words) and add tests before changing it.
 
 ## Pending decisions (need approval)
 - Whether to remove or archive the old backup files
 - Confirm: keep the JavaScript calculator separate from the Python pipeline (Python already has calculate_discount)
+
 

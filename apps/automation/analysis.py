@@ -21,6 +21,8 @@ EXCLUDED_KEYWORDS = [
     "pc_builder",
 ]
 
+WHOLE_WORD_KEYWORDS = {"ai", "hp", "m1", "m2", "m3", "m4", "m5"}
+
 
 def clean_text(value):
     if value is None:
@@ -104,6 +106,13 @@ def get_spec_text(product):
             for key, value in specs.items()
         )
     ).lower()
+
+
+def keyword_matches(text, term):
+    if term in WHOLE_WORD_KEYWORDS:
+        return re.search(rf"\b{re.escape(term)}\b", text) is not None
+
+    return term in text
 
 
 def score_product(product):
@@ -192,7 +201,7 @@ def score_product(product):
 
     performance_hits = sum(
         1 for term in performance_terms
-        if term in combined
+        if keyword_matches(combined, term)
     )
 
     performance_score = min(performance_hits * 3, 20)
@@ -227,7 +236,7 @@ def score_product(product):
 
     market_hits = sum(
         1 for term in market_terms
-        if term in combined
+        if keyword_matches(combined, term)
     )
 
     market_score = min(market_hits * 2, 15)
@@ -253,7 +262,7 @@ def score_product(product):
 
     intent_hits = sum(
         1 for term in intent_terms
-        if term in combined
+        if keyword_matches(combined, term)
     )
 
     intent_score = min(intent_hits * 2, 10)
@@ -283,7 +292,7 @@ def score_product(product):
 
     social_hits = sum(
         1 for term in social_terms
-        if term in combined
+        if keyword_matches(combined, term)
     )
 
     social_score = min(social_hits * 2, 10)

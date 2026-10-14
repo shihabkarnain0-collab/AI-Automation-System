@@ -116,6 +116,13 @@ def keyword_matches(texts, term):
     return any(term in text for text in texts)
 
 
+def count_feature_groups(texts, feature_groups):
+    return sum(
+        any(keyword_matches(texts, term) for term in group)
+        for group in feature_groups
+    )
+
+
 def score_product(product):
     title = clean_text(product.get("title"))
     description = clean_text(product.get("description"))
@@ -182,28 +189,28 @@ def score_product(product):
     # 3. Performance / specification: 20 points
     # -------------------------------------------------
 
-    performance_terms = [
-        "core i5",
-        "core i7",
-        "core ultra",
-        "ryzen 5",
-        "ryzen 7",
-        "ryzen ai",
-        "m1",
-        "m2",
-        "m3",
-        "m4",
-        "m5",
-        "16gb",
-        "32gb",
-        "512gb",
-        "1tb",
-        "rtx",
+    performance_feature_groups = [
+        ("core i5",),
+        ("core i7",),
+        ("core ultra",),
+        ("ryzen 5",),
+        ("ryzen 7",),
+        ("ryzen ai",),
+        ("m1",),
+        ("m2",),
+        ("m3",),
+        ("m4",),
+        ("m5",),
+        ("16gb",),
+        ("32gb",),
+        ("512gb",),
+        ("1tb",),
+        ("rtx",),
     ]
 
-    performance_hits = sum(
-        1 for term in performance_terms
-        if keyword_matches(text_fields, term)
+    performance_hits = count_feature_groups(
+        text_fields,
+        performance_feature_groups,
     )
 
     performance_score = min(performance_hits * 3, 20)
@@ -218,27 +225,27 @@ def score_product(product):
     # 4. Bangladesh market suitability: 15 points
     # -------------------------------------------------
 
-    market_terms = [
-        "laptop",
-        "fhd",
-        "ssd",
-        "8gb",
-        "16gb",
-        "intel",
-        "amd",
-        "ryzen",
-        "apple",
-        "lenovo",
-        "hp",
-        "dell",
-        "acer",
-        "asus",
-        "msi",
+    market_feature_groups = [
+        ("laptop",),
+        ("fhd",),
+        ("ssd",),
+        ("8gb",),
+        ("16gb",),
+        ("intel",),
+        ("amd",),
+        ("ryzen",),
+        ("apple",),
+        ("lenovo",),
+        ("hp",),
+        ("dell",),
+        ("acer",),
+        ("asus",),
+        ("msi",),
     ]
 
-    market_hits = sum(
-        1 for term in market_terms
-        if keyword_matches(text_fields, term)
+    market_hits = count_feature_groups(
+        text_fields,
+        market_feature_groups,
     )
 
     market_score = min(market_hits * 2, 15)
@@ -251,20 +258,20 @@ def score_product(product):
     # 5. Purchase intent: 10 points
     # -------------------------------------------------
 
-    intent_terms = [
-        "in stock",
-        "fhd",
-        "ssd",
-        "ram",
-        "processor",
-        "laptop",
-        "price",
-        "order online",
+    intent_feature_groups = [
+        ("in stock",),
+        ("fhd",),
+        ("ssd",),
+        ("ram",),
+        ("processor",),
+        ("laptop",),
+        ("price",),
+        ("order online",),
     ]
 
-    intent_hits = sum(
-        1 for term in intent_terms
-        if keyword_matches(text_fields, term)
+    intent_hits = count_feature_groups(
+        text_fields,
+        intent_feature_groups,
     )
 
     intent_score = min(intent_hits * 2, 10)
@@ -277,24 +284,23 @@ def score_product(product):
     # 6. Social media marketing potential: 10 points
     # -------------------------------------------------
 
-    social_terms = [
-        "gaming",
-        "macbook",
-        "apple",
-        "ai",
-        "oled",
-        "touch",
-        "ultra",
-        "rtx",
-        "ryzen 7",
-        "core i7",
-        "core ultra",
-        "16gb",
+    social_feature_groups = [
+        ("gaming",),
+        ("macbook",),
+        ("apple",),
+        ("ai",),
+        ("oled",),
+        ("touch",),
+        ("ultra", "core ultra"),
+        ("rtx",),
+        ("ryzen 7",),
+        ("core i7",),
+        ("16gb",),
     ]
 
-    social_hits = sum(
-        1 for term in social_terms
-        if keyword_matches(text_fields, term)
+    social_hits = count_feature_groups(
+        text_fields,
+        social_feature_groups,
     )
 
     social_score = min(social_hits * 2, 10)

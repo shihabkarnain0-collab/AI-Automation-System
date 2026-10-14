@@ -11,7 +11,10 @@ PIPELINE = [
     ("3/6 Analysis", AUTOMATION_DIR / "analysis.py"),
     ("4/6 Affiliate", AUTOMATION_DIR / "affiliate.py"),
     ("5/6 Content", AUTOMATION_DIR / "content.py"),
-    ("6/6 Analytics", AUTOMATION_DIR / "analytics.py"),
+    (
+        "6/6 Analytics",
+        AUTOMATION_DIR / "analytics" / "analytics.py",
+    ),
 ]
 
 

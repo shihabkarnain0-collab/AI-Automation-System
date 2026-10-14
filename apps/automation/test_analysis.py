@@ -129,5 +129,77 @@ class ScoreProductSubstringTests(unittest.TestCase):
         )
 
 
+class CrossFieldPhraseTests(unittest.TestCase):
+    def test_core_i7_does_not_match_across_title_and_description(self):
+        result = score_product({
+            "title": "Core",
+            "description": "i7",
+            "brand": "",
+            "category": "",
+            "specifications": {},
+        })
+
+        self.assertEqual(
+            (
+                result["score"],
+                result["metrics"]["performance_score"],
+                result["metrics"]["social_marketing_score"],
+            ),
+            (0, 0, 0),
+        )
+
+    def test_in_stock_does_not_match_across_title_and_description(self):
+        result = score_product({
+            "title": "In",
+            "description": "stock",
+            "brand": "",
+            "category": "",
+            "specifications": {},
+        })
+
+        self.assertEqual(
+            (
+                result["score"],
+                result["metrics"]["purchase_intent_score"],
+            ),
+            (0, 0),
+        )
+
+    def test_core_i7_matches_when_present_within_one_field(self):
+        result = score_product({
+            "title": "Core i7",
+            "description": "",
+            "brand": "",
+            "category": "",
+            "specifications": {},
+        })
+
+        self.assertEqual(
+            (
+                result["score"],
+                result["metrics"]["performance_score"],
+                result["metrics"]["social_marketing_score"],
+            ),
+            (5, 3, 2),
+        )
+
+    def test_in_stock_matches_when_present_within_one_field(self):
+        result = score_product({
+            "title": "In stock",
+            "description": "",
+            "brand": "",
+            "category": "",
+            "specifications": {},
+        })
+
+        self.assertEqual(
+            (
+                result["score"],
+                result["metrics"]["purchase_intent_score"],
+            ),
+            (2, 2),
+        )
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -97,22 +97,23 @@ def calculate_discount(price, old_price):
     return round(((old_price - price) / old_price) * 100, 2)
 
 
-def get_spec_text(product):
+def get_spec_texts(product):
     specs = product.get("specifications", {})
 
-    return clean_text(
-        " ".join(
-            f"{key} {value}"
-            for key, value in specs.items()
-        )
-    ).lower()
+    return [
+        clean_text(f"{key} {value}").lower()
+        for key, value in specs.items()
+    ]
 
 
-def keyword_matches(text, term):
+def keyword_matches(texts, term):
     if term in WHOLE_WORD_KEYWORDS:
-        return re.search(rf"\b{re.escape(term)}\b", text) is not None
+        return any(
+            re.search(rf"\b{re.escape(term)}\b", text) is not None
+            for text in texts
+        )
 
-    return term in text
+    return any(term in text for text in texts)
 
 
 def score_product(product):
@@ -121,12 +122,13 @@ def score_product(product):
     brand = clean_text(product.get("brand"))
     category = clean_text(product.get("category"))
     url = clean_text(product.get("source_url"))
-    specs = get_spec_text(product)
-
-    combined = (
-        f"{title} {description} {brand} "
-        f"{category} {specs}"
-    ).lower()
+    text_fields = [
+        title.lower(),
+        description.lower(),
+        brand.lower(),
+        category.lower(),
+        *get_spec_texts(product),
+    ]
 
     price = get_price(product)
     old_price = get_old_price(product)
@@ -201,7 +203,7 @@ def score_product(product):
 
     performance_hits = sum(
         1 for term in performance_terms
-        if keyword_matches(combined, term)
+        if keyword_matches(text_fields, term)
     )
 
     performance_score = min(performance_hits * 3, 20)
@@ -236,7 +238,7 @@ def score_product(product):
 
     market_hits = sum(
         1 for term in market_terms
-        if keyword_matches(combined, term)
+        if keyword_matches(text_fields, term)
     )
 
     market_score = min(market_hits * 2, 15)
@@ -262,7 +264,7 @@ def score_product(product):
 
     intent_hits = sum(
         1 for term in intent_terms
-        if keyword_matches(combined, term)
+        if keyword_matches(text_fields, term)
     )
 
     intent_score = min(intent_hits * 2, 10)
@@ -292,7 +294,7 @@ def score_product(product):
 
     social_hits = sum(
         1 for term in social_terms
-        if keyword_matches(combined, term)
+        if keyword_matches(text_fields, term)
     )
 
     social_score = min(social_hits * 2, 10)

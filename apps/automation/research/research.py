@@ -4,6 +4,11 @@ import requests
 from pathlib import Path
 from bs4 import BeautifulSoup
 
+if __package__:
+    from .product_data import is_usable_product_data
+else:
+    from product_data import is_usable_product_data
+
 
 HEADERS = {
     "User-Agent": (
@@ -454,8 +459,22 @@ def batch_product_research():
             result["research_status"]
         )
 
+    successful_product_count = sum(
+        product.get("research_status") == "completed"
+        and is_usable_product_data(product.get("product_data"))
+        for product in products
+    )
+    failed_product_count = total - successful_product_count
+
+    if successful_product_count == total and total > 0:
+        research_status = "completed"
+    elif successful_product_count > 0:
+        research_status = "partial"
+    else:
+        research_status = "failed"
+
     return {
-        "research_status": "completed",
+        "research_status": research_status,
         "source": "Star Tech",
         "category_url": discovery.get(
             "category_url"
@@ -464,6 +483,8 @@ def batch_product_research():
         "researched_product_count": len(
             products
         ),
+        "successful_product_count": successful_product_count,
+        "failed_product_count": failed_product_count,
         "products": products
     }
 

@@ -2,6 +2,8 @@
 import re
 from pathlib import Path
 
+from research.product_data import is_usable_product_data
+
 
 BASE_DIR = Path(__file__).resolve().parent
 RESEARCH_FILE = BASE_DIR / "data" / "research" / "latest.json"
@@ -348,6 +350,9 @@ def score_product(product):
 
 
 def is_valid_product(product):
+    if product.get("research_status") != "completed":
+        return False
+
     url = clean_text(product.get("source_url")).lower()
     title = clean_text(product.get("title")).lower()
 
@@ -355,7 +360,7 @@ def is_valid_product(product):
         if keyword in url or keyword in title:
             return False
 
-    if not product.get("product_data"):
+    if not is_usable_product_data(product.get("product_data")):
         return False
 
     return True

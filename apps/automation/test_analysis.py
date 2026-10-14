@@ -1,4 +1,10 @@
+import json
+import tempfile
 import unittest
+from pathlib import Path
+from unittest.mock import patch
+
+import analysis
 from analysis import calculate_discount, score_product
 
 
@@ -199,6 +205,127 @@ class CrossFieldPhraseTests(unittest.TestCase):
             ),
             (2, 2),
         )
+
+
+class ResearchStatusFilteringTests(unittest.TestCase):
+    def analyze_products(self, products):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            temp_path = Path(temp_dir)
+            research_file = temp_path / "research.json"
+            output_dir = temp_path / "analysis"
+
+            research_file.write_text(
+                json.dumps({"products": products}),
+                encoding="utf-8",
+            )
+
+            with (
+                patch.object(analysis, "RESEARCH_FILE", research_file),
+                patch.object(analysis, "OUTPUT_DIR", output_dir),
+                patch.object(
+                    analysis,
+                    "OUTPUT_FILE",
+                    output_dir / "latest.json",
+                ),
+            ):
+                return analysis.run_analysis()
+
+    def test_failed_record_with_data_is_excluded(self):
+        result = self.analyze_products([
+            {
+                "research_status": "failed",
+                "product_name": "Failed Laptop",
+                "product_data": {"title": "16GB Laptop"},
+            },
+        ])
+
+        self.assertEqual(result["valid_products"], 0)
+        self.assertEqual(result["products"], [])
+        self.assertIsNone(result["best_product"])
+
+    def test_completed_record_with_data_remains_eligible(self):
+        result = self.analyze_products([
+            {
+                "research_status": "completed",
+                "product_name": "Valid Laptop",
+                "product_data": {
+                    "title": "16GB Laptop",
+                    "specifications": {},
+                },
+            },
+        ])
+
+        self.assertEqual(result["valid_products"], 1)
+        self.assertEqual(
+            result["products"][0]["product_name"],
+            "16GB Laptop",
+        )
+        self.assertEqual(
+            result["products"][0]["research_status"],
+            "completed",
+        )
+
+    def test_completed_record_with_all_empty_extracted_data_is_excluded(self):
+        result = self.analyze_products([
+            {
+                "research_status": "completed",
+                "product_data": {
+                    "title": None,
+                    "description": None,
+                    "price": None,
+                    "old_price": None,
+                    "discount": None,
+                    "availability": None,
+                    "brand": None,
+                    "category": None,
+                    "image": None,
+                    "specifications": {},
+                },
+            },
+        ])
+
+        self.assertEqual(result["valid_products"], 0)
+        self.assertEqual(result["products"], [])
+
+    def test_completed_record_with_non_dictionary_data_is_excluded(self):
+        result = self.analyze_products([
+            {
+                "research_status": "completed",
+                "product_data": ["16GB Laptop"],
+            },
+        ])
+
+        self.assertEqual(result["valid_products"], 0)
+        self.assertEqual(result["products"], [])
+
+    def test_missing_research_status_is_excluded(self):
+        result = self.analyze_products([
+            {
+                "product_name": "Untracked Laptop",
+                "product_data": {"title": "16GB Laptop"},
+            },
+        ])
+
+        self.assertEqual(result["valid_products"], 0)
+        self.assertEqual(result["products"], [])
+
+    def test_missing_or_empty_product_data_is_excluded(self):
+        for product in (
+            {"research_status": "completed"},
+            {
+                "research_status": "completed",
+                "product_data": None,
+            },
+            {
+                "research_status": "completed",
+                "product_data": {},
+            },
+        ):
+            with self.subTest(product=product):
+                result = self.analyze_products([product])
+
+                self.assertEqual(result["valid_products"], 0)
+                self.assertEqual(result["products"], [])
 
 
 class FeatureGroupScoringTests(unittest.TestCase):
